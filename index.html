@@ -731,6 +731,70 @@
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
   }
+
+  .stats-counter {
+    max-width: 900px;
+    margin: 0 auto 32px auto;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+    flex-wrap: wrap;
+  }
+  .counter-item {
+    text-align: center;
+  }
+  .counter-number {
+    font-size: 48px;
+    font-weight: 900;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .counter-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .counter-divider {
+    font-size: 48px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .counter-badge {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  @media (max-width: 900px) {
+    .stats-counter {
+      gap: 24px;
+      padding: 20px 16px;
+    }
+    .counter-number {
+      font-size: 36px;
+    }
+    .counter-label {
+      font-size: 14px;
+    }
+    .counter-divider {
+      font-size: 36px;
+    }
+    .counter-badge {
+      font-size: 20px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -796,8 +860,20 @@
   </div>
 </div>
 
-<div class="note" role="note" style="text-align:center; font-weight:bold; font-size:18px; color:#116466; background-color:#d7e7d0; border-left: 6px solid #028090; padding: 14px 20px; border-radius: 8px;">
-  <span id="rollingCounter">6000+ MCQ &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 10000+ NEET pointers &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; AI integrated</span>
+<div class="stats-counter" role="note">
+  <div class="counter-item">
+    <div class="counter-number" id="mcqCounter">0</div>
+    <div class="counter-label">MCQs</div>
+  </div>
+  <div class="counter-divider">|</div>
+  <div class="counter-item">
+    <div class="counter-number" id="pointersCounter">0</div>
+    <div class="counter-label">NEET Pointers</div>
+  </div>
+  <div class="counter-divider">|</div>
+  <div class="counter-item">
+    <div class="counter-badge">✨ AI Integrated</div>
+  </div>
 </div>
 
 <div class="controls" role="region" aria-label="Filtering controls">
@@ -1608,6 +1684,30 @@
     savePersistentData();
     showQuestions();
   }
+
+  // Counter animation function
+  function animateCounter(elementId, target, duration) {
+    const element = document.getElementById(elementId);
+    const start = 0;
+    const increment = target / (duration / 16); // 60 FPS
+    let current = start;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        element.textContent = target.toLocaleString() + '+';
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(current).toLocaleString();
+      }
+    }, 16);
+  }
+  
+  // Start counter animation on page load
+  window.addEventListener('load', () => {
+    animateCounter('mcqCounter', 6000, 2000);
+    animateCounter('pointersCounter', 10000, 2500);
+  });
 </script>
 </body>
 </html>
