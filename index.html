@@ -955,97 +955,112 @@
     </div>
   </div>
 </div>
-<!-- Simple Animated DNA (NO external libraries needed) -->
-<div style="max-width: 700px; margin: 20px auto; padding: 20px; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-  <h3 style="color: #1b5e20; text-align: center; margin-bottom: 20px; font-weight: 800;">🧬 DNA Double Helix Structure</h3>
+
+    
+<!-- DNA Visualization - FORCED TO TOP LAYER -->
+<div style="max-width: 700px; margin: 20px auto; padding: 25px; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); position: relative; z-index: 9999;">
+  <h3 style="color: #1b5e20; text-align: center; margin: 0 0 20px 0; font-weight: 800; font-size: 22px;">🧬 DNA Double Helix Structure</h3>
   
-  <svg width="100%" height="250" viewBox="0 0 500 250" style="background: rgba(255,255,255,0.3); border-radius: 12px;">
-    <!-- DNA strands with smooth curves -->
-    <defs>
-      <linearGradient id="strand1" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" style="stop-color:#1976D2;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#42A5F5;stop-opacity:1" />
-      </linearGradient>
-      <linearGradient id="strand2" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" style="stop-color:#D32F2F;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#EF5350;stop-opacity:1" />
-      </linearGradient>
-    </defs>
-    
-    <!-- Left strand (animated) -->
-    <path d="M 80 20 Q 40 60 80 100 T 80 180 Q 40 220 80 240" 
-          stroke="url(#strand1)" 
-          stroke-width="12" 
-          fill="none" 
-          stroke-linecap="round"
-          opacity="0.9">
-      <animate attributeName="d" 
-        values="M 80 20 Q 40 60 80 100 T 80 180 Q 40 220 80 240;
-                M 80 20 Q 120 60 80 100 T 80 180 Q 120 220 80 240;
-                M 80 20 Q 40 60 80 100 T 80 180 Q 40 220 80 240" 
-        dur="6s" 
-        repeatCount="indefinite"/>
-    </path>
-    
-    <!-- Right strand (animated opposite) -->
-    <path d="M 420 20 Q 460 60 420 100 T 420 180 Q 460 220 420 240" 
-          stroke="url(#strand2)" 
-          stroke-width="12" 
-          fill="none" 
-          stroke-linecap="round"
-          opacity="0.9">
-      <animate attributeName="d" 
-        values="M 420 20 Q 460 60 420 100 T 420 180 Q 460 220 420 240;
-                M 420 20 Q 380 60 420 100 T 420 180 Q 380 220 420 240;
-                M 420 20 Q 460 60 420 100 T 420 180 Q 460 220 420 240" 
-        dur="6s" 
-        repeatCount="indefinite"/>
-    </path>
-    
-    <!-- Base pairs (connecting lines with different colors) -->
-    <line x1="80" y1="35" x2="420" y2="35" stroke="#4CAF50" stroke-width="6" opacity="0.8">
-      <animate attributeName="stroke-width" values="6;8;6" dur="3s" repeatCount="indefinite"/>
-    </line>
-    <circle cx="250" cy="35" r="8" fill="#4CAF50"/>
-    
-    <line x1="80" y1="70" x2="420" y2="70" stroke="#FF9800" stroke-width="6" opacity="0.8">
-      <animate attributeName="stroke-width" values="6;8;6" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-    </line>
-    <circle cx="250" cy="70" r="8" fill="#FF9800"/>
-    
-    <line x1="80" y1="105" x2="420" y2="105" stroke="#9C27B0" stroke-width="6" opacity="0.8">
-      <animate attributeName="stroke-width" values="6;8;6" dur="3s" begin="1s" repeatCount="indefinite"/>
-    </line>
-    <circle cx="250" cy="105" r="8" fill="#9C27B0"/>
-    
-    <line x1="80" y1="140" x2="420" y2="140" stroke="#00BCD4" stroke-width="6" opacity="0.8">
-      <animate attributeName="stroke-width" values="6;8;6" dur="3s" begin="1.5s" repeatCount="indefinite"/>
-    </line>
-    <circle cx="250" cy="140" r="8" fill="#00BCD4"/>
-    
-    <line x1="80" y1="175" x2="420" y2="175" stroke="#E91E63" stroke-width="6" opacity="0.8">
-      <animate attributeName="stroke-width" values="6;8;6" dur="3s" begin="2s" repeatCount="indefinite"/>
-    </line>
-    <circle cx="250" cy="175" r="8" fill="#E91E63"/>
-    
-    <line x1="80" y1="210" x2="420" y2="210" stroke="#FFC107" stroke-width="6" opacity="0.8">
-      <animate attributeName="stroke-width" values="6;8;6" dur="3s" begin="2.5s" repeatCount="indefinite"/>
-    </line>
-    <circle cx="250" cy="210" r="8" fill="#FFC107"/>
-    
-    <!-- Base pair labels -->
-    <text x="250" y="32" text-anchor="middle" font-size="10" font-weight="bold" fill="#1B5E20">A-T</text>
-    <text x="250" y="67" text-anchor="middle" font-size="10" font-weight="bold" fill="#E65100">G-C</text>
-    <text x="250" y="102" text-anchor="middle" font-size="10" font-weight="bold" fill="#4A148C">C-G</text>
-    <text x="250" y="137" text-anchor="middle" font-size="10" font-weight="bold" fill="#006064">T-A</text>
-    <text x="250" y="172" text-anchor="middle" font-size="10" font-weight="bold" fill="#880E4F">A-T</text>
-    <text x="250" y="207" text-anchor="middle" font-size="10" font-weight="bold" fill="#F57F17">G-C</text>
-  </svg>
+  <div style="background: rgba(255,255,255,0.5); border-radius: 12px; padding: 15px; position: relative; z-index: 10000;">
+    <svg width="100%" height="250" viewBox="0 0 500 250" style="display: block;">
+      <!-- DNA strands with smooth curves -->
+      <defs>
+        <linearGradient id="strand1" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#1976D2;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#42A5F5;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="strand2" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#D32F2F;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#EF5350;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      
+      <!-- Left strand (animated) -->
+      <path d="M 80 20 Q 40 60 80 100 T 80 180 Q 40 220 80 240" 
+            stroke="url(#strand1)" 
+            stroke-width="14" 
+            fill="none" 
+            stroke-linecap="round"
+            opacity="0.95">
+        <animate attributeName="d" 
+          values="M 80 20 Q 40 60 80 100 T 80 180 Q 40 220 80 240;
+                  M 80 20 Q 120 60 80 100 T 80 180 Q 120 220 80 240;
+                  M 80 20 Q 40 60 80 100 T 80 180 Q 40 220 80 240" 
+          dur="5s" 
+          repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Right strand (animated opposite) -->
+      <path d="M 420 20 Q 460 60 420 100 T 420 180 Q 460 220 420 240" 
+            stroke="url(#strand2)" 
+            stroke-width="14" 
+            fill="none" 
+            stroke-linecap="round"
+            opacity="0.95">
+        <animate attributeName="d" 
+          values="M 420 20 Q 460 60 420 100 T 420 180 Q 460 220 420 240;
+                  M 420 20 Q 380 60 420 100 T 420 180 Q 380 220 420 240;
+                  M 420 20 Q 460 60 420 100 T 420 180 Q 460 220 420 240" 
+          dur="5s" 
+          repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Base pairs (connecting lines with different colors) -->
+      <!-- Pair 1 -->
+      <line x1="80" y1="35" x2="420" y2="35" stroke="#4CAF50" stroke-width="8" opacity="0.9" stroke-linecap="round">
+        <animate attributeName="stroke-width" values="8;10;8" dur="2.5s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="250" cy="35" r="10" fill="#4CAF50" opacity="0.9"/>
+      <text x="250" y="39" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">AT</text>
+      
+      <!-- Pair 2 -->
+      <line x1="80" y1="70" x2="420" y2="70" stroke="#FF9800" stroke-width="8" opacity="0.9" stroke-linecap="round">
+        <animate attributeName="stroke-width" values="8;10;8" dur="2.5s" begin="0.5s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="250" cy="70" r="10" fill="#FF9800" opacity="0.9"/>
+      <text x="250" y="74" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">GC</text>
+      
+      <!-- Pair 3 -->
+      <line x1="80" y1="105" x2="420" y2="105" stroke="#9C27B0" stroke-width="8" opacity="0.9" stroke-linecap="round">
+        <animate attributeName="stroke-width" values="8;10;8" dur="2.5s" begin="1s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="250" cy="105" r="10" fill="#9C27B0" opacity="0.9"/>
+      <text x="250" y="109" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">CG</text>
+      
+      <!-- Pair 4 -->
+      <line x1="80" y1="140" x2="420" y2="140" stroke="#00BCD4" stroke-width="8" opacity="0.9" stroke-linecap="round">
+        <animate attributeName="stroke-width" values="8;10;8" dur="2.5s" begin="1.5s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="250" cy="140" r="10" fill="#00BCD4" opacity="0.9"/>
+      <text x="250" y="144" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">TA</text>
+      
+      <!-- Pair 5 -->
+      <line x1="80" y1="175" x2="420" y2="175" stroke="#E91E63" stroke-width="8" opacity="0.9" stroke-linecap="round">
+        <animate attributeName="stroke-width" values="8;10;8" dur="2.5s" begin="2s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="250" cy="175" r="10" fill="#E91E63" opacity="0.9"/>
+      <text x="250" y="179" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">AT</text>
+      
+      <!-- Pair 6 -->
+      <line x1="80" y1="210" x2="420" y2="210" stroke="#FFC107" stroke-width="8" opacity="0.9" stroke-linecap="round">
+        <animate attributeName="stroke-width" values="8;10;8" dur="2.5s" begin="2.5s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="250" cy="210" r="10" fill="#FFC107" opacity="0.9"/>
+      <text x="250" y="214" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">GC</text>
+    </svg>
+  </div>
   
-  <p style="text-align: center; margin-top: 15px; color: #2E7D32; font-size: 14px; font-weight: 600;">
-    Interactive DNA molecule showing complementary base pairing
-  </p>
+  <div style="text-align: center; margin-top: 18px; padding: 12px; background: rgba(255,255,255,0.7); border-radius: 8px;">
+    <p style="margin: 0; color: #1B5E20; font-size: 15px; font-weight: 700;">
+      🔬 Animated DNA Double Helix with Complementary Base Pairs
+    </p>
+    <p style="margin: 5px 0 0 0; color: #2E7D32; font-size: 13px; font-weight: 600;">
+      A=Adenine, T=Thymine, G=Guanine, C=Cytosine
+    </p>
+  </div>
 </div>
+    
+
 <div class="controls" role="region" aria-label="Filtering controls">
   <div class="class-reload-group">
     <div class="class-dropdown-part">
