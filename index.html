@@ -10,10 +10,6 @@
     margin: 0;
     padding: 20px 24px;
     background-color: #f9fafb;
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" opacity="0.4"><path d="M200,50 Q220,70 200,90 T200,130 T200,170 T200,210 T200,250" stroke="rgba(45,106,79,0.08)" stroke-width="2" fill="none"/><path d="M150,50 Q130,70 150,90 T150,130 T150,170 T150,210 T150,250" stroke="rgba(45,106,79,0.08)" stroke-width="2" fill="none"/><path d="M250,50 Q270,70 250,90 T250,130 T250,170 T250,210 T250,250" stroke="rgba(45,106,79,0.08)" stroke-width="2" fill="none"/><circle cx="200" cy="60" r="15" fill="rgba(82,183,136,0.06)"/><circle cx="180" cy="100" r="12" fill="rgba(82,183,136,0.06)"/><circle cx="220" cy="140" r="14" fill="rgba(82,183,136,0.06)"/><circle cx="190" cy="180" r="11" fill="rgba(82,183,136,0.06)"/><circle cx="210" cy="220" r="13" fill="rgba(82,183,136,0.06)"/><ellipse cx="150" cy="80" rx="8" ry="12" fill="rgba(64,145,108,0.05)"/><ellipse cx="250" cy="120" rx="8" ry="12" fill="rgba(64,145,108,0.05)"/><ellipse cx="170" cy="160" rx="8" ry="12" fill="rgba(64,145,108,0.05)"/></svg>');
-    background-size: 400px 400px;
-    background-position: center;
-    background-attachment: fixed;
     color: #1f2937;
     overflow-x: hidden;
   }
@@ -263,7 +259,7 @@
     box-shadow: 0 12px 32px rgba(45, 106, 79, 0.4);
     flex-wrap: wrap;
     position: relative;
-    overflow: hidden;
+    z-index: 1;
   }
   .stats-counter::before {
     content: '';
@@ -272,10 +268,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="60" cy="40" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="110" cy="20" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="160" cy="50" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="35" cy="80" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="85" cy="100" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="135" cy="90" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="185" cy="110" r="2" fill="rgba(255,255,255,0.08)"/></svg>');
+    background: url('data:image/svg+xml,%3Csvg width="100" height="100" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.15)"/%3E%3Ccircle cx="50" cy="30" r="2" fill="rgba(255,255,255,0.15)"/%3E%3Ccircle cx="80" cy="60" r="2" fill="rgba(255,255,255,0.15)"/%3E%3C/svg%3E');
     border-radius: 20px;
     opacity: 1;
-    pointer-events: none;
   }
   .counter-item {
     text-align: center;
@@ -306,7 +301,6 @@
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
-    border: 2px solid rgba(45, 106, 79, 0.2);
   }
   .digit-box::after {
     content: '';
@@ -315,7 +309,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.1);
   }
   .digit-number {
     font-size: 42px;
@@ -796,6 +790,29 @@
   }
   
   @media (max-width: 900px) {
+    .stats-counter {
+      gap: 32px;
+      padding: 24px 20px;
+    }
+    .digit-box {
+      width: 42px;
+      height: 60px;
+    }
+    .digit-number {
+      font-size: 36px;
+    }
+    .counter-label {
+      font-size: 12px;
+    }
+    .counter-divider {
+      height: 60px;
+    }
+    .ai-badge {
+      padding: 12px 24px;
+    }
+    .ai-text {
+      font-size: 16px;
+    }
     .controls { 
       flex-direction: column; 
       align-items: stretch;
@@ -826,7 +843,6 @@
     .content-area {
       max-width: 100%;
       padding: 20px 16px;
-      min-height: 300px;
     }
     .question-item {
       max-width: 100%;
@@ -842,31 +858,7 @@
       text-align: center;
       margin-bottom: 16px;
     }
-    .stats-counter {
-      gap: 32px;
-      padding: 24px 20px;
-    }
-    .digit-box {
-      width: 42px;
-      height: 60px;
-    }
-    .digit-number {
-      font-size: 36px;
-    }
-    .counter-label {
-      font-size: 12px;
-    }
-    .counter-divider {
-      height: 60px;
-    }
-    .ai-badge {
-      padding: 12px 24px;
-    }
-    .ai-text {
-      font-size: 16px;
-    }
   }
-
 </style>
 </head>
 <body>
@@ -1777,7 +1769,6 @@
   function animateCounterDigits(digitIds, targetNumber, duration) {
     const digits = String(targetNumber).padStart(digitIds.length, '0').split('');
     const startTime = Date.now();
-    const endTime = startTime + duration;
     
     function updateDigits() {
       const now = Date.now();
@@ -1787,10 +1778,8 @@
         const element = document.getElementById(digitIds[index]);
         if (element) {
           if (progress < 1) {
-            // Animate through random numbers
             element.textContent = Math.floor(Math.random() * 10);
           } else {
-            // Set final value
             element.textContent = targetDigit;
           }
         }
