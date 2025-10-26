@@ -732,69 +732,205 @@
     box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
   }
 
-  .stats-counter {
-    max-width: 900px;
+  /* Mechanical Counter Dashboard */
+  .counter-dashboard {
+    max-width: 1000px;
     margin: 0 auto 32px auto;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 16px;
+    padding: 0;
+  }
+  
+  .dashboard-panel {
+    background: linear-gradient(180deg, #3d2f2a 0%, #2b1f1a 50%, #3d2f2a 100%);
+    border-radius: 12px;
     padding: 24px 32px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 40px;
-    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+    gap: 32px;
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 -2px 16px rgba(200, 220, 255, 0.15);
+    position: relative;
+    overflow: hidden;
     flex-wrap: wrap;
   }
-  .counter-item {
-    text-align: center;
+  
+  .dashboard-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px),
+      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px);
+    pointer-events: none;
+    opacity: 0.5;
   }
-  .counter-number {
-    font-size: 48px;
-    font-weight: 900;
-    color: #ffd700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    line-height: 1;
-    margin-bottom: 8px;
+  
+  .counter-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
   }
+  
   .counter-label {
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 700;
-    color: #ffffff;
+    color: #a0a0a0;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    font-family: 'Courier New', monospace;
   }
-  .counter-divider {
-    font-size: 48px;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.5);
-  }
-  .counter-badge {
-    font-size: 24px;
-    font-weight: 800;
-    color: #ffd700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  
+  .counter-display {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
   }
+  
+  .digit-slot {
+    background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+    border: 1px solid #333;
+    border-radius: 6px;
+    width: 42px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.8),
+      inset 0 -1px 2px rgba(255, 255, 255, 0.05),
+      0 2px 8px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    perspective: 1000px;
+  }
+  
+  .digit-slot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  }
+  
+  .digit {
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffcc55;
+    font-family: 'Courier New', monospace;
+    text-shadow: 
+      0 0 10px rgba(255, 204, 85, 0.8),
+      0 0 20px rgba(255, 204, 85, 0.4);
+    animation: digitGlow 2s ease-in-out infinite;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  @keyframes digitGlow {
+    0%, 100% { text-shadow: 0 0 10px rgba(255, 204, 85, 0.8), 0 0 20px rgba(255, 204, 85, 0.4); }
+    50% { text-shadow: 0 0 15px rgba(255, 204, 85, 1), 0 0 30px rgba(255, 204, 85, 0.6); }
+  }
+  
+  .digit.flipping {
+    animation: verticalFlip 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  @keyframes verticalFlip {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(90deg); opacity: 0; }
+    51% { transform: rotateX(-90deg); opacity: 0; }
+    100% { transform: rotateX(0deg); opacity: 1; }
+  }
+  
+  .plus-sign {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffcc55;
+    margin-left: 4px;
+    text-shadow: 0 0 8px rgba(255, 204, 85, 0.6);
+  }
+  
+  .counter-divider {
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(180deg, transparent, #555, transparent);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+  }
+  
+  .ai-section {
+    min-width: 180px;
+  }
+  
+  .ai-indicator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 204, 85, 0.2);
+  }
+  
+  .ai-light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffcc55;
+    box-shadow: 
+      0 0 8px rgba(255, 204, 85, 0.8),
+      0 0 16px rgba(255, 204, 85, 0.4),
+      inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    animation: aiPulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes aiPulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(255, 204, 85, 0.8), 0 0 16px rgba(255, 204, 85, 0.4); }
+    50% { opacity: 0.6; box-shadow: 0 0 12px rgba(255, 204, 85, 1), 0 0 24px rgba(255, 204, 85, 0.6); }
+  }
+  
+  .ai-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffcc55;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    text-shadow: 0 0 4px rgba(255, 204, 85, 0.4);
+  }
+  
   @media (max-width: 900px) {
-    .stats-counter {
-      gap: 24px;
+    .dashboard-panel {
       padding: 20px 16px;
-    }
-    .counter-number {
-      font-size: 36px;
-    }
-    .counter-label {
-      font-size: 14px;
+      gap: 20px;
     }
     .counter-divider {
-      font-size: 36px;
+      display: none;
     }
-    .counter-badge {
-      font-size: 20px;
+    .digit-slot {
+      width: 36px;
+      height: 52px;
+    }
+    .digit {
+      font-size: 30px;
+    }
+    .counter-label {
+      font-size: 11px;
+    }
+    .ai-section {
+      min-width: auto;
+      width: 100%;
+    }
+    .ai-indicator {
+      justify-content: center;
     }
   }
+
 </style>
 </head>
 <body>
@@ -860,19 +996,37 @@
   </div>
 </div>
 
-<div class="stats-counter" role="note">
-  <div class="counter-item">
-    <div class="counter-number" id="mcqCounter">0</div>
-    <div class="counter-label">MCQs</div>
-  </div>
-  <div class="counter-divider">|</div>
-  <div class="counter-item">
-    <div class="counter-number" id="pointersCounter">0</div>
-    <div class="counter-label">NEET Pointers</div>
-  </div>
-  <div class="counter-divider">|</div>
-  <div class="counter-item">
-    <div class="counter-badge">✨ AI Integrated</div>
+<div class="counter-dashboard">
+  <div class="dashboard-panel">
+    <div class="counter-section">
+      <div class="counter-label">MCQs</div>
+      <div class="counter-display">
+        <div class="digit-slot"><span class="digit" id="mcq-d4">6</span></div>
+        <div class="digit-slot"><span class="digit" id="mcq-d3">0</span></div>
+        <div class="digit-slot"><span class="digit" id="mcq-d2">0</span></div>
+        <div class="digit-slot"><span class="digit" id="mcq-d1">0</span></div>
+        <div class="plus-sign">+</div>
+      </div>
+    </div>
+    <div class="counter-divider"></div>
+    <div class="counter-section">
+      <div class="counter-label">NEET Pointers</div>
+      <div class="counter-display">
+        <div class="digit-slot"><span class="digit" id="ptr-d5">1</span></div>
+        <div class="digit-slot"><span class="digit" id="ptr-d4">0</span></div>
+        <div class="digit-slot"><span class="digit" id="ptr-d3">0</span></div>
+        <div class="digit-slot"><span class="digit" id="ptr-d2">0</span></div>
+        <div class="digit-slot"><span class="digit" id="ptr-d1">0</span></div>
+        <div class="plus-sign">+</div>
+      </div>
+    </div>
+    <div class="counter-divider"></div>
+    <div class="counter-section ai-section">
+      <div class="ai-indicator">
+        <div class="ai-light"></div>
+        <span class="ai-text">✨ AI Integrated</span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1685,29 +1839,72 @@
     showQuestions();
   }
 
-  // Counter animation function
-  function animateCounter(elementId, target, duration) {
+  // Mechanical Counter Digit Flipping Animation
+  const digitElements = {
+    mcq: ['mcq-d1', 'mcq-d2', 'mcq-d3', 'mcq-d4'],
+    ptr: ['ptr-d1', 'ptr-d2', 'ptr-d3', 'ptr-d4', 'ptr-d5']
+  };
+  
+  const baseValues = {
+    mcq: [0, 0, 0, 6],  // 6000
+    ptr: [0, 0, 0, 0, 1]  // 10000
+  };
+  
+  function flipDigit(elementId, targetValue) {
     const element = document.getElementById(elementId);
-    const start = 0;
-    const increment = target / (duration / 16); // 60 FPS
-    let current = start;
+    if (!element) return;
     
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        element.textContent = target.toLocaleString() + '+';
-        clearInterval(timer);
-      } else {
-        element.textContent = Math.floor(current).toLocaleString();
-      }
-    }, 16);
+    element.classList.add('flipping');
+    
+    setTimeout(() => {
+      element.textContent = targetValue;
+      element.classList.remove('flipping');
+    }, 300);
   }
   
-  // Start counter animation on page load
+  function getRandomNearbyValue(baseValue, index) {
+    // Only flip the last 1-2 digits slightly
+    if (index < 2) {
+      const variation = Math.floor(Math.random() * 5) - 2; // -2 to +2
+      return Math.max(0, Math.min(9, baseValue + variation));
+    }
+    return baseValue;
+  }
+  
+  function animateCounter(type) {
+    const digits = digitElements[type];
+    const base = baseValues[type];
+    
+    // Pick a random digit to flip (prefer last digits)
+    const flipIndex = Math.random() < 0.7 ? 0 : (Math.random() < 0.5 ? 1 : 2);
+    
+    if (flipIndex < digits.length) {
+      const newValue = getRandomNearbyValue(base[flipIndex], flipIndex);
+      flipDigit(digits[flipIndex], newValue);
+    }
+  }
+  
+  function startCounterAnimation() {
+    // Animate MCQ counter
+    setInterval(() => {
+      if (Math.random() < 0.4) { // 40% chance every interval
+        animateCounter('mcq');
+      }
+    }, 2000);
+    
+    // Animate Pointer counter
+    setInterval(() => {
+      if (Math.random() < 0.4) {
+        animateCounter('ptr');
+      }
+    }, 2300);
+  }
+  
+  // Start animations after page load
   window.addEventListener('load', () => {
-    animateCounter('mcqCounter', 6000, 2000);
-    animateCounter('pointersCounter', 10000, 2500);
+    setTimeout(startCounterAnimation, 1000);
   });
+
 </script>
 </body>
 </html>
