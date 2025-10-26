@@ -1984,5 +1984,15 @@ answer: "a) The displacing metal is more reactive than displaced one"
   });
 
 </script>
+
+  <script src="https://3dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+<div id="dnaviewer" style="height: 400px; width: 400px;"></div>
+<script>
+  let viewer = $3Dmol.createViewer("dnaviewer");
+  viewer.addModel("DNA_PDB_data", "pdb");
+  viewer.setStyle({}, {cartoon: {color: 'spectrum'}});
+  viewer.zoomTo();
+  viewer.render();
+</script>
 </body>
 </html>
