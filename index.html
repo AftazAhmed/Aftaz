@@ -955,7 +955,32 @@
     </div>
   </div>
 </div>
+<!-- DNA Visualization Section -->
+<div style="max-width: 600px; margin: 20px auto; text-align: center;">
+  <h3 style="color: #2d6a4f; font-weight: 700; margin-bottom: 10px;">Interactive DNA Structure</h3>
+  <div id="dna-viewer" style="height: 400px; width: 100%; background: #f0f8f5; border-radius: 12px; border: 2px solid #52b788;"></div>
+</div>
 
+<!-- Add 3Dmol.js library -->
+<script src="https://3dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+
+<script>
+// Initialize DNA viewer
+document.addEventListener('DOMContentLoaded', function() {
+  let viewer = $3Dmol.createViewer("dna-viewer", {
+    backgroundColor: '#f0f8f5'
+  });
+  
+  // Fetch DNA structure from PDB database
+  $3Dmol.download("pdb:1BNA", viewer, {}, function() {
+    viewer.setStyle({}, {cartoon: {color: 'spectrum'}});
+    viewer.setStyle({}, {stick: {colorscheme: 'nucleicColors'}});
+    viewer.zoomTo();
+    viewer.spin(true); // Auto-rotate
+    viewer.render();
+  });
+});
+</script>
 <div class="controls" role="region" aria-label="Filtering controls">
   <div class="class-reload-group">
     <div class="class-dropdown-part">
@@ -1985,14 +2010,6 @@ answer: "a) The displacing metal is more reactive than displaced one"
 
 </script>
 
-  <script src="https://3dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
-<div id="dnaviewer" style="height: 400px; width: 400px;"></div>
-<script>
-  let viewer = $3Dmol.createViewer("dnaviewer");
-  viewer.addModel("DNA_PDB_data", "pdb");
-  viewer.setStyle({}, {cartoon: {color: 'spectrum'}});
-  viewer.zoomTo();
-  viewer.render();
-</script>
+
 </body>
 </html>
