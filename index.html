@@ -2089,365 +2089,137 @@ answer: "a) The displacing metal is more reactive than displaced one"
   });
 
 </script>
-<!-- TEXT HIGHLIGHTING FEATURE FOR NEET POINTERS -->
+
+  
+<!-- SIMPLIFIED TEXT HIGHLIGHTING FOR NEET POINTERS -->
 <style>
-  /* Highlight styles */
-  .user-highlight {
-    background: linear-gradient(120deg, #ffd60a 0%, #ffc300 100%);
-    padding: 2px 4px;
-    border-radius: 3px;
+  .text-highlight {
+    background: #ffd60a;
+    padding: 2px 0;
+    border-radius: 2px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
+    transition: background 0.2s;
   }
   
-  .user-highlight:hover {
-    background: linear-gradient(120deg, #ffed4e 0%, #ffd60a 100%);
-    box-shadow: 0 2px 8px rgba(255, 214, 10, 0.4);
+  .text-highlight:hover {
+    background: #ffed4e;
   }
   
-  /* Highlight color options */
-  .highlight-yellow { background: linear-gradient(120deg, #ffd60a 0%, #ffc300 100%) !important; }
-  .highlight-green { background: linear-gradient(120deg, #52b788 0%, #40916c 100%) !important; color: white !important; }
-  .highlight-blue { background: linear-gradient(120deg, #42A5F5 0%, #1976D2 100%) !important; color: white !important; }
-  .highlight-pink { background: linear-gradient(120deg, #F48FB1 0%, #EC407A 100%) !important; color: white !important; }
-  .highlight-orange { background: linear-gradient(120deg, #FFB74D 0%, #FF9800 100%) !important; color: white !important; }
-  
-  /* Highlight toolbar */
-  .highlight-toolbar {
+  .highlight-menu {
     position: fixed;
     background: white;
     border: 2px solid #2d6a4f;
     border-radius: 8px;
-    padding: 8px 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     display: none;
     z-index: 99999;
-    gap: 8px;
-    align-items: center;
   }
   
-  .highlight-toolbar.active {
-    display: flex;
-  }
+  .highlight-menu.show { display: block; }
   
-  .highlight-btn {
-    width: 32px;
-    height: 32px;
-    border: 2px solid #ddd;
+  .color-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
     border-radius: 6px;
+    margin: 0 4px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative;
+    transition: transform 0.2s;
   }
   
-  .highlight-btn:hover {
-    transform: scale(1.1);
-    border-color: #2d6a4f;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  }
+  .color-btn:hover { transform: scale(1.1); }
   
-  .highlight-btn-yellow { background: linear-gradient(120deg, #ffd60a, #ffc300); }
-  .highlight-btn-green { background: linear-gradient(120deg, #52b788, #40916c); }
-  .highlight-btn-blue { background: linear-gradient(120deg, #42A5F5, #1976D2); }
-  .highlight-btn-pink { background: linear-gradient(120deg, #F48FB1, #EC407A); }
-  .highlight-btn-orange { background: linear-gradient(120deg, #FFB74D, #FF9800); }
-  
-  .highlight-btn-remove {
-    background: linear-gradient(120deg, #ff4444, #cc0000);
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 28px;
-    text-align: center;
-  }
-  
-  /* Highlight counter badge */
-  .highlight-counter {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #2d6a4f, #52b788);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 25px;
-    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.4);
-    font-weight: 700;
-    font-size: 14px;
-    z-index: 9998;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: none;
-  }
-  
-  .highlight-counter.active {
-    display: block;
-  }
-  
-  .highlight-counter:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(45, 106, 79, 0.5);
-  }
+  .color-yellow { background: #ffd60a; }
+  .color-green { background: #52b788; }
+  .color-blue { background: #42A5F5; }
+  .color-pink { background: #F48FB1; }
+  .color-remove { background: #ff4444; color: white; font-weight: bold; }
 </style>
 
-<div id="highlightToolbar" class="highlight-toolbar">
-  <div class="highlight-btn highlight-btn-yellow" data-color="yellow" title="Yellow highlight"></div>
-  <div class="highlight-btn highlight-btn-green" data-color="green" title="Green highlight"></div>
-  <div class="highlight-btn highlight-btn-blue" data-color="blue" title="Blue highlight"></div>
-  <div class="highlight-btn highlight-btn-pink" data-color="pink" title="Pink highlight"></div>
-  <div class="highlight-btn highlight-btn-orange" data-color="orange" title="Orange highlight"></div>
-  <div class="highlight-btn highlight-btn-remove" title="Remove highlight">×</div>
-</div>
-
-<div id="highlightCounter" class="highlight-counter">
-  📝 <span id="highlightCount">0</span> Highlights
+<div id="highlightMenu" class="highlight-menu">
+  <button class="color-btn color-yellow" onclick="highlightText('#ffd60a')">Y</button>
+  <button class="color-btn color-green" onclick="highlightText('#52b788')">G</button>
+  <button class="color-btn color-blue" onclick="highlightText('#42A5F5')">B</button>
+  <button class="color-btn color-pink" onclick="highlightText('#F48FB1')">P</button>
+  <button class="color-btn color-remove" onclick="removeHighlight()">×</button>
 </div>
 
 <script>
-(function() {
-  // Highlight management system
-  const highlightData = {
-    items: JSON.parse(localStorage.getItem('neet-highlights') || '{}'),
-    count: 0
-  };
-  
-  const toolbar = document.getElementById('highlightToolbar');
-  const counter = document.getElementById('highlightCounter');
-  const countDisplay = document.getElementById('highlightCount');
-  
-  let selectedText = '';
-  let selectedRange = null;
-  let activePointer = null;
-  
-  // Update highlight count
-  function updateCount() {
-    highlightData.count = Object.keys(highlightData.items).length;
-    countDisplay.textContent = highlightData.count;
-    
-    if (highlightData.count > 0) {
-      counter.classList.add('active');
-    } else {
-      counter.classList.remove('active');
-    }
-  }
-  
-  // Save highlights to localStorage
-  function saveHighlights() {
-    localStorage.setItem('neet-highlights', JSON.stringify(highlightData.items));
-    updateCount();
-  }
-  
-  // Apply saved highlights when pointers are loaded
-  function applySavedHighlights() {
-    const pointers = document.querySelectorAll('.summary-pointer');
-    
-    pointers.forEach((pointer, index) => {
-      const pointerId = `pointer-${index}`;
-      
-      if (highlightData.items[pointerId]) {
-        const highlights = highlightData.items[pointerId];
-        let html = pointer.querySelector('.pointer-text').innerHTML;
-        
-        // Apply each highlight
-        highlights.forEach(hl => {
-          const regex = new RegExp(escapeRegex(hl.text), 'g');
-          html = html.replace(regex, `<span class="user-highlight highlight-${hl.color}" data-highlight-id="${hl.id}">${hl.text}</span>`);
-        });
-        
-        pointer.querySelector('.pointer-text').innerHTML = html;
-      }
-    });
-  }
-  
-  // Escape special regex characters
-  function escapeRegex(str) {
-    return str.replace(/[.*+?^${}()|[]\\]/g, '\\$&');
-  }
-  
-  // Text selection handler
-  document.addEventListener('mouseup', function(e) {
-    // Only work within summary pointers
-    const pointer = e.target.closest('.summary-pointer');
-    if (!pointer) {
-      toolbar.classList.remove('active');
-      return;
-    }
-    
-    const selection = window.getSelection();
-    selectedText = selection.toString().trim();
-    
-    if (selectedText.length > 0 && selectedText.length < 200) {
-      selectedRange = selection.getRangeAt(0);
-      activePointer = pointer;
-      
-      // Position toolbar near selection
-      const rect = selectedRange.getBoundingClientRect();
-      toolbar.style.left = `${rect.left + window.scrollX}px`;
-      toolbar.style.top = `${rect.top + window.scrollY - 50}px`;
-      toolbar.classList.add('active');
-    } else {
-      toolbar.classList.remove('active');
-    }
-  });
-  
-  // Close toolbar when clicking outside
-  document.addEventListener('mousedown', function(e) {
-    if (!toolbar.contains(e.target) && !e.target.closest('.summary-pointer')) {
-      toolbar.classList.remove('active');
-    }
-  });
-  
-  // Highlight button click handler
-  toolbar.addEventListener('click', function(e) {
-    const btn = e.target.closest('.highlight-btn');
-    if (!btn) return;
-    
-    const color = btn.dataset.color;
-    
-    if (color === undefined) {
-      // Remove highlight button clicked
-      removeHighlightAtSelection();
-    } else {
-      // Color button clicked
-      applyHighlight(color);
-    }
-    
-    toolbar.classList.remove('active');
-    window.getSelection().removeAllRanges();
-  });
-  
-  // Apply highlight to selected text
-  function applyHighlight(color) {
-    if (!selectedRange || !activePointer) return;
-    
-    const pointerId = `pointer-${Array.from(document.querySelectorAll('.summary-pointer')).indexOf(activePointer)}`;
-    const highlightId = `hl-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-    
-    // Create highlight span
-    const span = document.createElement('span');
-    span.className = `user-highlight highlight-${color}`;
-    span.dataset.highlightId = highlightId;
-    
-    try {
-      selectedRange.surroundContents(span);
-      
-      // Save to storage
-      if (!highlightData.items[pointerId]) {
-        highlightData.items[pointerId] = [];
-      }
-      
-      highlightData.items[pointerId].push({
-        id: highlightId,
-        text: selectedText,
-        color: color,
-        timestamp: Date.now()
-      });
-      
-      saveHighlights();
-    } catch (e) {
-      console.log('Highlight error:', e);
-      // Fallback: replace text with highlighted version
-      const pointerText = activePointer.querySelector('.pointer-text');
-      let html = pointerText.innerHTML;
-      html = html.replace(selectedText, `<span class="user-highlight highlight-${color}" data-highlight-id="${highlightId}">${selectedText}</span>`);
-      pointerText.innerHTML = html;
-      
-      if (!highlightData.items[pointerId]) {
-        highlightData.items[pointerId] = [];
-      }
-      
-      highlightData.items[pointerId].push({
-        id: highlightId,
-        text: selectedText,
-        color: color,
-        timestamp: Date.now()
-      });
-      
-      saveHighlights();
-    }
-  }
-  
-  // Remove highlight at selection
-  function removeHighlightAtSelection() {
-    const selection = window.getSelection();
-    const node = selection.anchorNode?.parentElement;
-    
-    if (node && node.classList.contains('user-highlight')) {
-      const highlightId = node.dataset.highlightId;
-      const pointer = node.closest('.summary-pointer');
-      const pointerId = `pointer-${Array.from(document.querySelectorAll('.summary-pointer')).indexOf(pointer)}`;
-      
-      // Remove from storage
-      if (highlightData.items[pointerId]) {
-        highlightData.items[pointerId] = highlightData.items[pointerId].filter(hl => hl.id !== highlightId);
-        
-        if (highlightData.items[pointerId].length === 0) {
-          delete highlightData.items[pointerId];
-        }
-      }
-      
-      // Remove from DOM
-      const text = node.textContent;
-      node.replaceWith(text);
-      
-      saveHighlights();
-    }
-  }
-  
-  // Double-click on highlight to remove
-  document.addEventListener('dblclick', function(e) {
-    if (e.target.classList.contains('user-highlight')) {
-      const highlightId = e.target.dataset.highlightId;
-      const pointer = e.target.closest('.summary-pointer');
-      const pointerId = `pointer-${Array.from(document.querySelectorAll('.summary-pointer')).indexOf(pointer)}`;
-      
-      // Remove from storage
-      if (highlightData.items[pointerId]) {
-        highlightData.items[pointerId] = highlightData.items[pointerId].filter(hl => hl.id !== highlightId);
-        
-        if (highlightData.items[pointerId].length === 0) {
-          delete highlightData.items[pointerId];
-        }
-      }
-      
-      // Remove from DOM
-      const text = e.target.textContent;
-      e.target.replaceWith(text);
-      
-      saveHighlights();
-    }
-  });
-  
-  // Click counter to show all highlights
-  counter.addEventListener('click', function() {
-    const highlights = document.querySelectorAll('.user-highlight');
-    if (highlights.length > 0) {
-      highlights[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  });
-  
-  // Apply highlights when NEET Pointers are loaded
-  const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      if (mutation.addedNodes.length) {
-        setTimeout(applySavedHighlights, 100);
-      }
-    });
-  });
-  
-  // Start observing content area
-  const contentArea = document.getElementById('contentArea');
-  if (contentArea) {
-    observer.observe(contentArea, { childList: true, subtree: true });
-  }
-  
-  // Initial count update
-  updateCount();
-  
-  // Apply highlights on page load
-  setTimeout(applySavedHighlights, 500);
-})();
-</script>
+let selectedTextNode = null;
+let selectedTextRange = null;
 
+// Show menu on text selection
+document.addEventListener('mouseup', function(e) {
+  const selection = window.getSelection();
+  const text = selection.toString().trim();
+  
+  // Only work in summary pointers
+  const inPointer = e.target.closest('.summary-pointer');
+  if (!inPointer || text.length === 0) {
+    document.getElementById('highlightMenu').classList.remove('show');
+    return;
+  }
+  
+  if (text.length > 0 && text.length < 150) {
+    selectedTextRange = selection.getRangeAt(0);
+    selectedTextNode = selection.anchorNode;
+    
+    // Position menu
+    const rect = selectedTextRange.getBoundingClientRect();
+    const menu = document.getElementById('highlightMenu');
+    menu.style.left = (rect.left + window.scrollX) + 'px';
+    menu.style.top = (rect.top + window.scrollY - 60) + 'px';
+    menu.classList.add('show');
+  }
+});
+
+// Close menu on click outside
+document.addEventListener('mousedown', function(e) {
+  if (!e.target.closest('#highlightMenu') && !e.target.closest('.summary-pointer')) {
+    document.getElementById('highlightMenu').classList.remove('show');
+  }
+});
+
+// Apply highlight
+function highlightText(color) {
+  if (!selectedTextRange) return;
+  
+  const span = document.createElement('span');
+  span.className = 'text-highlight';
+  span.style.background = color;
+  
+  try {
+    selectedTextRange.surroundContents(span);
+  } catch(e) {
+    console.log('Cannot highlight across elements');
+  }
+  
+  document.getElementById('highlightMenu').classList.remove('show');
+  window.getSelection().removeAllRanges();
+}
+
+// Remove highlight
+function removeHighlight() {
+  const selection = window.getSelection();
+  const node = selection.anchorNode?.parentElement;
+  
+  if (node && node.classList.contains('text-highlight')) {
+    const text = node.textContent;
+    node.replaceWith(text);
+  }
+  
+  document.getElementById('highlightMenu').classList.remove('show');
+}
+
+// Double-click to remove
+document.addEventListener('dblclick', function(e) {
+  if (e.target.classList.contains('text-highlight')) {
+    const text = e.target.textContent;
+    e.target.replaceWith(text);
+  }
+});
+</script>  
+  
 </body>
 </html>
