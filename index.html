@@ -244,122 +244,17 @@
     content: '🔒';
     margin-left: 8px;
   }
-  
-  /* Biology-themed Stats Counter */
-  .stats-counter {
-    max-width: 1000px;
-    margin: 0 auto 32px auto;
-    background: linear-gradient(135deg, #2d6a4f 0%, #40916c 50%, #52b788 100%);
-    border-radius: 20px;
-    padding: 32px 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 48px;
-    box-shadow: 0 12px 32px rgba(45, 106, 79, 0.4);
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-  }
-  .stats-counter::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,%3Csvg width="100" height="100" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.15)"/%3E%3Ccircle cx="50" cy="30" r="2" fill="rgba(255,255,255,0.15)"/%3E%3Ccircle cx="80" cy="60" r="2" fill="rgba(255,255,255,0.15)"/%3E%3C/svg%3E');
-    border-radius: 20px;
-    opacity: 1;
-  }
-  .counter-item {
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-  .counter-label {
+  .note {
+    max-width: 720px;
+    margin: 0 auto 24px auto;
+    font-style: italic;
     font-size: 14px;
-    font-weight: 700;
-    color: #d8f3dc;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-  }
-  .counter-display {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    justify-content: center;
-  }
-  .digit-box {
-    background: #ffffff;
+    color: #4b6650;
+    background-color: #d7e7d0;
+    border-left: 6px solid #a8c77a;
+    padding: 12px 20px;
     border-radius: 8px;
-    width: 50px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
   }
-  .digit-box::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: rgba(0, 0, 0, 0.1);
-  }
-  .digit-number {
-    font-size: 42px;
-    font-weight: 900;
-    color: #1b4332;
-    font-family: 'Arial Black', sans-serif;
-    line-height: 1;
-  }
-  .plus-sign {
-    font-size: 36px;
-    font-weight: 900;
-    color: #d8f3dc;
-    margin-left: 4px;
-  }
-  .counter-divider {
-    width: 3px;
-    height: 80px;
-    background: linear-gradient(180deg, transparent, #d8f3dc, transparent);
-    border-radius: 2px;
-    position: relative;
-    z-index: 1;
-  }
-  .ai-badge {
-    background: linear-gradient(135deg, #ffd60a 0%, #ffc300 100%);
-    padding: 16px 32px;
-    border-radius: 50px;
-    box-shadow: 0 6px 20px rgba(255, 214, 10, 0.4);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    position: relative;
-    z-index: 1;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-  }
-  .ai-icon {
-    font-size: 28px;
-    animation: sparkle 2s ease-in-out infinite;
-  }
-  @keyframes sparkle {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-    50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
-  }
-  .ai-text {
-    font-size: 20px;
-    font-weight: 900;
-    color: #1b4332;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
   .controls {
     display: flex;
     flex-wrap: wrap;
@@ -717,7 +612,55 @@
     font-size: 17px;
     padding: 48px 10px;
   }
-  
+  @media (max-width: 900px) {
+    .controls { 
+      flex-direction: column; 
+      align-items: stretch;
+    }
+    .dropdown-group { 
+      min-width: unset; 
+      width: 100%;
+    }
+    .class-reload-group {
+      min-width: unset;
+      width: 100%;
+      flex-direction: row;
+    }
+    .class-dropdown-part {
+      flex: 1;
+    }
+    .reload-btn {
+      margin-left: 8px;
+      flex-shrink: 0;
+    }
+    .header h1 {
+      padding-left: 8px;
+      padding-right: 8px;
+      margin-left: 0;
+      max-width: 320px;
+      white-space: normal;
+    }
+    .content-area {
+      max-width: 100%;
+      padding: 20px 16px;
+      min-height: 300px;
+    }
+    .question-item {
+      max-width: 100%;
+      padding: 18px 12px;
+    }
+    .question-text {
+      font-size: 15px;
+    }
+    .login-section {
+      position: relative;
+      top: auto;
+      right: auto;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+  }
+
   .summary-toggle-btn {
     background: #5c0a0a;
     color: #fff;
@@ -788,77 +731,6 @@
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
   }
-  
-  @media (max-width: 900px) {
-    .stats-counter {
-      gap: 32px;
-      padding: 24px 20px;
-    }
-    .digit-box {
-      width: 42px;
-      height: 60px;
-    }
-    .digit-number {
-      font-size: 36px;
-    }
-    .counter-label {
-      font-size: 12px;
-    }
-    .counter-divider {
-      height: 60px;
-    }
-    .ai-badge {
-      padding: 12px 24px;
-    }
-    .ai-text {
-      font-size: 16px;
-    }
-    .controls { 
-      flex-direction: column; 
-      align-items: stretch;
-    }
-    .dropdown-group { 
-      min-width: unset; 
-      width: 100%;
-    }
-    .class-reload-group {
-      min-width: unset;
-      width: 100%;
-      flex-direction: row;
-    }
-    .class-dropdown-part {
-      flex: 1;
-    }
-    .reload-btn {
-      margin-left: 8px;
-      flex-shrink: 0;
-    }
-    .header h1 {
-      padding-left: 8px;
-      padding-right: 8px;
-      margin-left: 0;
-      max-width: 320px;
-      white-space: normal;
-    }
-    .content-area {
-      max-width: 100%;
-      padding: 20px 16px;
-    }
-    .question-item {
-      max-width: 100%;
-      padding: 18px 12px;
-    }
-    .question-text {
-      font-size: 15px;
-    }
-    .login-section {
-      position: relative;
-      top: auto;
-      right: auto;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-  }
 </style>
 </head>
 <body>
@@ -924,132 +796,9 @@
   </div>
 </div>
 
-
-  <div class="counter-divider"></div>
-  <div class="counter-item">
-    <div class="counter-label">NEET Pointers</div>
-    <div class="counter-display">
-      <div class="digit-box"><span class="digit-number" id="ptr-d1">0</span></div>
-      <div class="digit-box"><span class="digit-number" id="ptr-d2">0</span></div>
-      <div class="digit-box"><span class="digit-number" id="ptr-d3">0</span></div>
-      <div class="digit-box"><span class="digit-number" id="ptr-d4">0</span></div>
-      <div class="digit-box"><span class="digit-number" id="ptr-d5">0</span></div>
-      <div class="plus-sign">+</div>
-    </div>
-  </div>
-  <div class="counter-divider"></div>
-  <div class="counter-item">
-    <div class="ai-badge">
-      <span class="ai-icon">✨</span>
-      <span class="ai-text">AI Integrated</span>
-    </div>
-  </div>
+<div class="note" role="note">
+  <em>Note: Some questions from a particular page may appear in subsequent pages because the concept of the question may span multiple pages.</em>
 </div>
-
-    
-<!-- DNA Visualization - FORCED TO TOP LAYER -->
-<div style="max-width: 700px; margin: 20px auto; padding: 25px; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); position: relative; z-index: 9999;">
-  <h3 style="color: #1b5e20; text-align: center; margin: 0 0 20px 0; font-weight: 800; font-size: 22px;">🧬 DNA Double Helix Structure</h3>
-  
-  <div style="background: rgba(255,255,255,0.5); border-radius: 12px; padding: 15px; position: relative; z-index: 10000;">
-    <svg width="100%" height="250" viewBox="0 0 500 250" style="display: block;">
-      <!-- DNA strands with smooth curves -->
-      <defs>
-        <linearGradient id="strand1" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" style="stop-color:#1976D2;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#42A5F5;stop-opacity:1" />
-        </linearGradient>
-        <linearGradient id="strand2" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" style="stop-color:#D32F2F;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#EF5350;stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      
-      <!-- Left strand (animated) -->
-      <path d="M 80 20 Q 40 60 80 100 T 80 180 Q 40 220 80 240" 
-            stroke="url(#strand1)" 
-            stroke-width="14" 
-            fill="none" 
-            stroke-linecap="round"
-            opacity="0.95">
-        <animate attributeName="d" 
-          values="M 80 20 Q 40 60 80 100 T 80 180 Q 40 220 80 240;
-                  M 80 20 Q 120 60 80 100 T 80 180 Q 120 220 80 240;
-                  M 80 20 Q 40 60 80 100 T 80 180 Q 40 220 80 240" 
-          dur="5s" 
-          repeatCount="indefinite"/>
-      </path>
-      
-      <!-- Right strand (animated opposite) -->
-      <path d="M 420 20 Q 460 60 420 100 T 420 180 Q 460 220 420 240" 
-            stroke="url(#strand2)" 
-            stroke-width="14" 
-            fill="none" 
-            stroke-linecap="round"
-            opacity="0.95">
-        <animate attributeName="d" 
-          values="M 420 20 Q 460 60 420 100 T 420 180 Q 460 220 420 240;
-                  M 420 20 Q 380 60 420 100 T 420 180 Q 380 220 420 240;
-                  M 420 20 Q 460 60 420 100 T 420 180 Q 460 220 420 240" 
-          dur="5s" 
-          repeatCount="indefinite"/>
-      </path>
-      
-      <!-- Base pairs (connecting lines with different colors) -->
-      <!-- Pair 1 -->
-      <line x1="80" y1="35" x2="420" y2="35" stroke="#4CAF50" stroke-width="8" opacity="0.9" stroke-linecap="round">
-        <animate attributeName="stroke-width" values="8;10;8" dur="2.5s" repeatCount="indefinite"/>
-      </line>
-      <circle cx="250" cy="35" r="10" fill="#4CAF50" opacity="0.9"/>
-      <text x="250" y="39" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">AT</text>
-      
-      <!-- Pair 2 -->
-      <line x1="80" y1="70" x2="420" y2="70" stroke="#FF9800" stroke-width="8" opacity="0.9" stroke-linecap="round">
-        <animate attributeName="stroke-width" values="8;10;8" dur="2.5s" begin="0.5s" repeatCount="indefinite"/>
-      </line>
-      <circle cx="250" cy="70" r="10" fill="#FF9800" opacity="0.9"/>
-      <text x="250" y="74" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">GC</text>
-      
-      <!-- Pair 3 -->
-      <line x1="80" y1="105" x2="420" y2="105" stroke="#9C27B0" stroke-width="8" opacity="0.9" stroke-linecap="round">
-        <animate attributeName="stroke-width" values="8;10;8" dur="2.5s" begin="1s" repeatCount="indefinite"/>
-      </line>
-      <circle cx="250" cy="105" r="10" fill="#9C27B0" opacity="0.9"/>
-      <text x="250" y="109" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">CG</text>
-      
-      <!-- Pair 4 -->
-      <line x1="80" y1="140" x2="420" y2="140" stroke="#00BCD4" stroke-width="8" opacity="0.9" stroke-linecap="round">
-        <animate attributeName="stroke-width" values="8;10;8" dur="2.5s" begin="1.5s" repeatCount="indefinite"/>
-      </line>
-      <circle cx="250" cy="140" r="10" fill="#00BCD4" opacity="0.9"/>
-      <text x="250" y="144" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">TA</text>
-      
-      <!-- Pair 5 -->
-      <line x1="80" y1="175" x2="420" y2="175" stroke="#E91E63" stroke-width="8" opacity="0.9" stroke-linecap="round">
-        <animate attributeName="stroke-width" values="8;10;8" dur="2.5s" begin="2s" repeatCount="indefinite"/>
-      </line>
-      <circle cx="250" cy="175" r="10" fill="#E91E63" opacity="0.9"/>
-      <text x="250" y="179" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">AT</text>
-      
-      <!-- Pair 6 -->
-      <line x1="80" y1="210" x2="420" y2="210" stroke="#FFC107" stroke-width="8" opacity="0.9" stroke-linecap="round">
-        <animate attributeName="stroke-width" values="8;10;8" dur="2.5s" begin="2.5s" repeatCount="indefinite"/>
-      </line>
-      <circle cx="250" cy="210" r="10" fill="#FFC107" opacity="0.9"/>
-      <text x="250" y="214" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">GC</text>
-    </svg>
-  </div>
-  
-  <div style="text-align: center; margin-top: 18px; padding: 12px; background: rgba(255,255,255,0.7); border-radius: 8px;">
-    <p style="margin: 0; color: #1B5E20; font-size: 15px; font-weight: 700;">
-      🔬 Animated DNA Double Helix with Complementary Base Pairs
-    </p>
-    <p style="margin: 5px 0 0 0; color: #2E7D32; font-size: 13px; font-weight: 600;">
-      A=Adenine, T=Thymine, G=Guanine, C=Cytosine
-    </p>
-  </div>
-</div>
-    
 
 <div class="controls" role="region" aria-label="Filtering controls">
   <div class="class-reload-group">
@@ -1098,72 +847,7 @@
       "2": {
         title: "Biological Classification",
         questions: {
-          "10": [[ {
-  question: "A marine biologist observes an organism with stinging capsules on tentacles, a central gastrovascular cavity, and the ability to exist as both a sessile cylindrical form and an umbrella-shaped free-swimming form. Which phylum classification and body form transitions would characterise this organism?",
-  options: [
-    "a) Porifera undergoing sponge differentiation without true tissue formation",
-    "b) Coelenterata (Cnidaria) exhibiting alternation of generations between polyp and medusa forms",
-    "c) Platyhelminthes with bilateral symmetry and hermaphroditic reproduction",
-    "d) Echinodermata with pentameric radial symmetry and water vascular system"
-  ],
-  answer: "b) Coelenterata (Cnidaria) exhibiting alternation of generations between polyp and medusa forms",
-  source: "pointer 1, 2, 8, 11"
-},
-{
-  question: "Which structural and functional adaptation distinguishes cnidarian nematocysts from other defensive organelles in marine invertebrates?",
-  options: [
-    "a) Chitinous secreted shells providing mechanical protection only",
-    "b) Stinging capsules containing toxins and housed within cnidoblasts for predation and defence",
-    "c) Calcium carbonate spicules offering structural rigidity without venom injection capability",
-    "d) Mucus layer secretion providing chemical deterrence without cellular penetration"
-  ],
-  answer: "b) Stinging capsules containing toxins and housed within cnidoblasts for predation and defence",
-  source: "pointer 2, 3"
-},
-{
-  question: "How do coelenterates accomplish both extracellular and intracellular digestion within their gastrovascular cavity system?",
-  options: [
-    "a) Secreted enzymes break down food externally; ingested particles are phagocytosed and digested intracellularly by endoderm cells",
-    "b) Only intracellular digestion occurs through direct cellular absorption without enzyme secretion",
-    "c) External bacterial colonisation pre-digests food before cellular uptake mechanisms",
-    "d) Dual enzyme systems function independently without cellular participation in breakdown"
-  ],
-  answer: "a) Secreted enzymes break down food externally; ingested particles are phagocytosed and digested intracellularly by endoderm cells",
-  source: "pointer 4, 5"
-},
-{
-  question: "Which life cycle strategy involving metagenesis allows cnidarians like Aurelia to maximise reproductive success in marine ecosystems?",
-  options: [
-    "a) Asexual reproduction exclusively through polyp budding generating large clone populations",
-    "b) Sexual reproduction only with direct gamete fusion producing planktonic larvae",
-    "c) Alternating asexual polyp budding producing medusae, which then reproduce sexually generating diverse offspring",
-    "d) Parthenogenetic reproduction in medusa forms producing genetically identical individuals"
-  ],
-  answer: "c) Alternating asexual polyp budding producing medusae, which then reproduce sexually generating diverse offspring",
-  source: "pointer 11, 12, 13"
-},
-{
-  question: "Comparing sessile polyp forms like Hydra and Adamsia to free-swimming medusa forms like Aurelia jelly fish, what adaptive significance does morphological dimorphism provide?",
-  options: [
-    "a) Polyps exclusively for predation; medusae solely for nutrient absorption from water",
-    "b) Polyps enable substrate-based feeding and asexual reproduction; medusae facilitate dispersal and sexual reproduction",
-    "c) Both forms function identically with morphological variation serving only aesthetic purposes",
-    "d) Medusae are obligatory parasitic stages dependent on polyp hosts for nutrition"
-  ],
-  answer: "b) Polyps enable substrate-based feeding and asexual reproduction; medusae facilitate dispersal and sexual reproduction",
-  source: "pointer 8, 9, 10, 12, 13"
-},
-{
-  question: "Which structural characteristic present in colonial coelenterates such as Gorgonia (sea fan) and brain corals provides both ecological functionality and evolutionary advantage?",
-  options: [
-    "a) Chitinous exoskeletons enabling rapid skeletal shedding and growth",
-    "b) Calcium carbonate skeletal frameworks supporting colony structure and substrate attachment",
-    "c) Silica-based spicules providing transparency and bioluminescent properties",
-    "d) Organic polymer matrices enabling rapid colour-based mimicry responses"
-  ],
-  answer: "b) Calcium carbonate skeletal frameworks supporting colony structure and substrate attachment",
-  source: "pointer 6, 14, 15"
-} ], "NEET POINTERS:<br><br>1. Phylum Coelenterata (Cnidaria) comprises aquatic organisms that are mostly marine, sessile or free-swimming with radial symmetry.<br><br>2. The name Cnidaria derives from cnidoblasts containing stinging capsules called nematocysts present on tentacles and body surface.<br><br>3. Coelenterates are diploblastic organisms with body tissues derived from two primary germ layers (ectoderm and endoderm).<br><br>4. A central gastrovascular cavity with a single opening (mouth) serves as the main digestive compartment.<br><br>5. Digestion in coelenterates is both extracellular (enzyme-mediated breakdown) and intracellular (phagocytic processes within cells).<br><br>6. Calcium carbonate skeletal structures are present in certain cnidarians like corals and sea fans.<br><br>7. Coelenterates exhibit tissue-level body organisation with specialised cell layers and tissues.<br><br>8. Two distinct body forms characterise coelenterates: polyp (sessile, cylindrical form) and medusa (umbrella-shaped, free-swimming form).<br><br>9. Polyp forms include hydra, adamsia, and sea anemones adapted for attached existence on substrates.<br><br>10. Medusa forms include Aurelia and jelly fish representing free-swimming planktonic morphologies.<br><br>11. Alternation of generations (metagenesis) occurs in cnidarians exhibiting both polyp and medusa forms in their lifecycle.<br><br>12. Polyps produce medusae asexually through budding and fragmentation processes.<br><br>13. Medusae produce gametes sexually for external fertilisation in marine environments.<br><br>14. Examples of Coelenterata include Physalia (Portuguese man-of-war), Adamsia (sea anemone), and Pennatula (sea pen).<br><br>15. Gorgonia (sea fan) and Coral (brain coral) exemplify colonial coelenterates with complex calcium carbonate skeletons."],
+          "10": [[], ""],
           "11": [[], ""],
           "12": [[], ""],
           "13": [[], ""],
@@ -1183,7 +867,7 @@
       "1": {
         title: "The Living World",
         questions: {
-          "3": [[], "NEET POINTERS:<br><br>1. Phylum <b>Ctenophora</b> includes organisms commonly known as sea walnuts or jellies.<br><br>2. <b>Ctenophores</b> are exclusively marine, radially symmetrical, and <b>diploblastic</b>.<br><br>3. They exhibit a <b>tissue level</b> of body organisation.<br><br>4. A key feature is the presence of <b>eight external rows of ciliated comb plates</b>, which are used for <b>locomotion</b>.<br><br>5. <b>Digestion</b> is both extracellular and intracellular.<br><br>6. <b>Bioluminescence</b>, the ability to emit light, is a well-marked characteristic of ctenophores.<br><br>7. Sexes are not separate (<b>monoecious</b>).<br><br>8. <b>Reproduction</b> occurs only through sexual means.<br><br>9. <b>Fertilisation</b> is external, and <b>development</b> is indirect.<br><br>10. Common examples of Ctenophora are <b>Pleurobranchia</b> and <b>Ctenoplana</b>."],
+          "3": [[], ""],
           "4": [[], ""],
           "5": [[], ""],
           "6": [[], ""],
@@ -1195,8 +879,7 @@
       "2": {
         title: "Biological Classification",
         questions: {
-          "10": [[], "NEET POINTERS:<br><br>1. Arthropoda is the <b>largest animal phylum</b> and includes insects, with <b>over two‑thirds</b> of all named animal species belonging to this group.<br><br>2. Ctenophores are <b>exclusively marine</b>, <b>radially symmetrical</b>, and <b>diploblastic</b> organisms that exhibit a <b>tissue level</b> of body organisation.<br><br>3. Arthropods show an <b>organ‑system level</b> of organisation and are <b>bilaterally symmetrical</b>, <b>triploblastic</b>, <b>segmented</b>, and <b>coelomate</b>.<br><br>4. A key feature is the presence of a <b>chitinous exoskeleton</b> covering the body, divided into <b>head, thorax, and abdomen</b>.<br><br>5. <b>Jointed appendages</b> are the defining characteristic of arthropods, enabling precise movement and manipulation.<br><br>6. Arthropods respire through <b>gills, book gills, book lungs</b>, or <b>tracheal systems</b> depending on habitat.<br><br>7. The <b>circulatory system is open type</b>, with hemolymph flowing freely in body cavities.<br><br>8. Sensory organs include <b>antennae, compound eyes, simple eyes</b>, and <b>statocysts</b> for balance and orientation.<br><br>9. Excretion takes place via <b>malpighian tubules</b>, enabling water conservation in terrestrial arthropods.<br><br>10. Arthropods are <b>mostly dioecious</b> with <b>internal fertilisation</b>, <b>mostly oviparous</b>, and show <b>direct or indirect development</b> with metamorphosis.<br><br>11. <b>Apis</b> (honey bee), <b>Bombyx</b> (silkworm), and <b>Laccifer</b> (lac insect) are economically important arthropods.<br><br>12. <b>Anopheles, Culex, and Aedes</b> mosquitoes act as disease vectors, transmitting malaria, dengue, and other infections.<br><br>13. <b>Locusta</b> (locust) is a gregarious pest forming destructive swarms that devastate crops.<br><br>14. <b>Limulus</b> (king crab) is regarded as a living fossil, representing ancient arthropod lineages.<br><br>15. Mollusca is the <b>second largest animal phylum</b>, occurring in terrestrial and aquatic (marine and freshwater) habitats.<br><br>16. Molluscs are <b>bilaterally symmetrical, triploblastic</b>, and <b>coelomate</b> with an <b>organ‑system level</b> of organisation.<br><br>17. The molluscan body is <b>unsegmented</b> and protected by a <b>calcareous shell</b>, consisting of <b>head, muscular foot</b>, and <b>visceral hump</b>.<br><br>18. The <b>mantle</b> is soft, spongy skin covering the visceral hump that <b>secretes the shell</b>.<br><br>19. The <b>mantle cavity</b> lies between the mantle and visceral hump, containing <b>feather‑like gills</b>.<br><br>20. Molluscan gills perform both <b>respiratory and excretory functions</b>, maximising surface area for efficiency.<br><br>21. The anterior head region bears <b>sensory tentacles</b> for detecting environment and food.<br><br>22. The <b>radula</b> is a <b>file‑like rasping organ</b> in the mouth used for feeding and food manipulation."],
-          "11": [[], ""], "12": [[], ""], "13": [[], ""], "14": [[], ""], "15": [[], ""],
+          "10": [[], ""], "11": [[], ""], "12": [[], ""], "13": [[], ""], "14": [[], ""], "15": [[], ""],
           "16": [[], ""], "17": [[], ""], "18": [[], ""], "19": [[], ""], "20": [[], ""], "21": [[], ""], "22": [[], ""]
         }
       },
@@ -1210,313 +893,8 @@
       "4": {
         title: "Animal Kingdom",
         questions: {
-          "37": [[], ""], "38": [[], ""], "39": [[], ""], "40": [[], ""], "41": [[], ""], "42": [[], ""], "43": [[// ========== PAGE 43: Phylum - Annelida ==========
-
-{ // q50
-    "question": "Which of the following choices accurately represents the features of Phylum Annelida? (2020-Covid)",
-    "options": [
-      "a) Diploblastic, mostly marine and radially symmetrical",
-      "b) Triploblastic, unsegmented body and bilaterally symmetrical",
-      "c) Triploblastic, flattened body and acoelomate condition",
-      "d) Triploblastic, segmented body and bilaterally symmetrical"
-    ],
-    "answer": "d"
-},
-{ // q52
-    "question": "Identify the animal from the list that does not go through metamorphosis. (2015)",
-    "options": [
-      "a) Tunicate",
-      "b) Earthworm",
-      "c) Moth",
-      "d) Starfish"
-    ],
-    "answer": "b"
-},
-{ // q61
-    "question": "Which of these features is absent in the phylum Annelida? (2008)",
-    "options": [
-      "a) Metameric segmentation",
-      "b) Nephridia",
-      "c) Pseudocoelom",
-      "d) Clitellum"
-    ],
-    "answer": "c"
-},
-{ // q65
-    "question": "The characteristic of metameric segmentation is found in which pair of phyla? (2006)",
-    "options": [
-      "a) Annelida and Arthropoda",
-      "b) Mollusca and Chordata",
-      "c) Platyhelminthes and Arthropoda",
-      "d) Echinodermata and Annelida"
-    ],
-    "answer": "a"
-},
-{ // q67
-    "question": "How do Platyhelminthes differ from annelids? (2005)",
-    "options": [
-      "a) Presence of pseudocoel",
-      "b) Radial symmetry",
-      "c) Bilateral symmetry",
-      "d) Absence of body cavity"
-    ],
-    "answer": "d"
-},
-{ // q73
-    "question": "From the organisms listed below, select the one that is completely non-parasitic. (1994)",
-    "options": [
-      "a) Leech",
-      "b) Sea anemone",
-      "c) Tapeworm",
-      "d) Mosquito"
-    ],
-    "answer": "b"
-},
-{ // q75
-    "question": "Which of the following structures is an aid for locomotion? [OS] (1993)",
-    "options": [
-      "a) Clitellum in Pheretima",
-      "b) Pedicellaria of starfish",
-      "c) Posterior sucker in Hirudinaria",
-      "d) Trichocysts in Paramecium"
-    ],
-    "answer": "c"
-}], "NEET POINTERS:<br><br>1. Phylum Annelida includes aquatic (marine and freshwater) and terrestrial organisms.<br><br>2. Annelids are triploblastic, coelomate animals with segmented (metameric) bodies.<br><br>3. Their body shows bilateral symmetry and organ-system level of organization.<br><br>4. They have longitudinal and circular muscles aiding locomotion.<br><br>5. Aquatic annelids like Nereis possess parapodia used for swimming.<br><br>6. Nephridia are excretory organs involved in osmoregulation.<br><br>7. The nervous system includes paired ganglia and a double ventral nerve cord.<br><br>8. Nereis is dioecious; earthworms and leeches are monoecious.<br><br>9. Reproduction in annelids is sexual.<br><br>10. Examples include Nereis, Pheretima (Earthworm) and Hirudinaria (Blood-sucking leech)."],
-          "44": [[  // ========== PAGE 44: Phylum - Arthropoda ==========
-
-{ // q47
-    "question": "Match the items in List-I with those in List-II and choose the correct option. [MR*] (2021)",
-    "options": [
-      "a) (A)-(ii), (B)-(iii), (C)-(iv), (D)-(i)",
-      "b) (A)-(iii), (B)-(ii), (C)-(i), (D)-(iv)",
-      "c) (A)-(iv), (B)-(i), (C)-(iii), (D)-(ii)",
-      "d) (A)-(i), (B)-(iv), (C)-(ii), (D)-(iii)"
-    ],
-    "answer": "a"
-},
-{ // q49
-    "question": "Match the characteristics in Column-I with the organisms in Column-II and select the correct option. [MR*] (2020)",
-    "options": [
-      "a) (A)-(iii), (B)-(ii), (C)-(i), (D)-(iv)",
-      "b) (A)-(iv), (B)-(i), (C)-(ii), (D)-(iii)",
-      "c) (A)-(i), (B)-(iii), (C)-(iv), (D)-(ii)",
-      "d) (A)-(ii), (B)-(i), (C)-(iii), (D)-(iv)"
-    ],
-    "answer": "b"
-},
-{ // q51
-    "question": "Pair the following organisms with their corresponding characteristics: (2019)",
-    "options": [
-      "a) A-ii, B-iii, C-iv, D-i",
-      "b) A-iv, B-i, C-ii, D-iii",
-      "c) A-iii, B-iv, C-ii, D-i",
-      "d) A-iii, B-iv, C-i, D-ii"
-    ],
-    "answer": "c"
-},
-{ // q53
-    "question": "Which one of these features is not found in the Phylum Arthropoda? (2016)",
-    "options": [
-      "a) Jointed appendages",
-      "b) Chitinous exoskeleton",
-      "c) Parapodia",
-      "d) Metameric segmentation"
-    ],
-    "answer": "c"
-},
-{ // q54
-    "question": "What primary characteristic is credited for the widespread diversification of insects on land? [OS] (2015)",
-    "options": [
-      "a) Bilateral symmetry",
-      "b) Eyes",
-      "c) Exoskeleton",
-      "d) Segmentation"
-    ],
-    "answer": "c"
-},
-{ // q56
-    "question": "Which of the following is a representative of Phylum Arthropoda? (2013)",
-    "options": [
-      "a) Pufferfish",
-      "b) Flying fish",
-      "c) Silverfish",
-      "d) Cuttlefish"
-    ],
-    "answer": "c"
-},
-{ // q57
-    "question": "Identify the correctly matched set according to taxonomic classification. [MR*] (2015)",
-    "options": [
-      "a) Centipede, millipede, spider, scorpion – Insecta",
-      "b) House fly, butterfly, mosquito, silverfish – Insecta",
-      "c) Spiny anteater, sea urchin, sea cucumber – Echinodermata",
-      "d) Flying fish, cuttlefish, silverfish – Pisces"
-    ],
-    "answer": "b"
-},
-{ // q58
-    "question": "Which of these groups contains animals all belonging to the same phylum? (2013)",
-    "options": [
-      "a) Earthworm, Pinworm, Tapeworm",
-      "b) Malarial parasite, Amoeba, Mosquito",
-      "c) Sponge, Sea anemone, Starfish",
-      "d) Prawn, Scorpion, Locusta"
-    ],
-    "answer": "d"
-},
-{ // q62
-    "question": "Which of the following is a mismatched pair? (2007)",
-    "options": [
-      "a) Bombyx mori-Silk",
-      "b) Kerria lacca-Lac",
-      "c) Pila globosa-Pearl",
-      "d) Apis indica-Honey"
-    ],
-    "answer": "c"
-},
-{ // q64
-    "question": "What are two common characteristics of the centipede, cockroach, and crab? (2006)",
-    "options": [
-      "a) Compound eyes and anal cerci",
-      "b) Book lungs and antennae",
-      "c) Jointed legs and chitinous exoskeleton",
-      "d) Green glands and tracheae"
-    ],
-    "answer": "c"
-},
-{ // q66
-    "question": "Choose the incorrect statement from the following: (2005)",
-    "options": [
-      "a) Millipedes have two pairs of appendages in each segment of the body",
-      "b) Nematocysts are characteristic of phylum Cnidaria",
-      "c) Prawn has two pairs of antennae",
-      "d) Poriferans are exclusively marine"
-    ],
-    "answer": "d"
-},
-{ // q69
-    "question": "In Arthropods, the head and thorax often fuse to create a cephalothorax. However, in which class is the body segmented into a distinct head, thorax, and abdomen? [OS] (2004)",
-    "options": [
-      "a) Insecta",
-      "b) Crustacea",
-      "c) Myriapoda",
-      "d) Arachnida and Crustacea"
-    ],
-    "answer": "a"
-},
-{ // q72
-    "question": "What shared feature is found among the silverfish, scorpion, crab, and honey bee? (1997)",
-    "options": [
-      "a) Poison glands",
-      "b) Metamorphosis",
-      "c) Compound eyes",
-      "d) Jointed legs"
-    ],
-    "answer": "d"
-},
-{ // q80
-    "question": "How can adult *Culex* and *Anopheles* mosquitoes be told apart? (1992)",
-    "options": [
-      "a) Feeding habits",
-      "b) Sitting posture",
-      "c) Antennae/wings",
-      "d) Mouth parts/colour"
-    ],
-    "answer": "b"
-},
-{ // q83
-    "question": "The process of metamorphosis in insects is controlled by which hormone? [OS] (1991)",
-    "options": [
-      "a) Pheromone",
-      "b) Thyroxine",
-      "c) Ecdysone",
-      "d) All of these"
-    ],
-    "answer": "c"
-},
-{ // q85
-    "question": "What is the function of Malpighian tubules? (1990)",
-    "options": [
-      "a) Respiratory organs of insects",
-      "b) Excretory organs of annelids",
-      "c) Respiratory organs of annelids",
-      "d) Excretory organs of insects"
-    ],
-    "answer": "d"
-},
-{ // q86
-    "question": "Which fish is utilized for the biological control of mosquitoes, acting as a larvicidal agent? [OS] (1989)",
-    "options": [
-      "a) Carp",
-      "b) Eel",
-      "c) Cat fish",
-      "d) Gambusia"
-    ],
-    "answer": "d"
-}  ], "NEET POINTERS:<br><br>1. Arthropoda is the largest phylum in the animal kingdom, comprising over two-thirds of all named species.<br><br>2. They exhibit an organ-system level of organization, are bilaterally symmetrical, triploblastic, segmented, and coelomate.<br><br>3. Their body is covered by a chitinous exoskeleton and is divided into a head, thorax, and abdomen.<br><br>4. The defining characteristic is the presence of jointed appendages.<br><br>5. Respiration occurs through gills, book gills, book lungs, or a tracheal system.<br><br>6. They possess an open circulatory system.<br><br>7. Excretion is carried out by Malpighian tubules.<br><br>8. Sensory organs include antennae, compound/simple eyes, and statocysts (balancing organs).<br><br>9. They are primarily dioecious and oviparous, with internal fertilization.<br><br>10. Economically important insects include *Apis* (honey bee) and *Bombyx* (silkworm).<br><br>11. Arthropods like *Anopheles* and *Culex* act as vectors for diseases.<br><br>12. *Locusta* is a gregarious pest, and *Limulus* (King crab) is known as a living fossil."],
-          "45": [[ // ========== PAGE 45: Phylum - Echinodermata ==========
-
-{ // q48
-    "question": "Review the following statements and select the correct option: A. Metagenesis is seen in Helminths. B. Echinoderms are triploblastic, coelomate animals. C. Round worms have an organ-system level of organization. D. Comb plates in ctenophores are for digestion. E. A water vascular system is characteristic of Echinoderms. [MR*] (2021)",
-    "options": [
-      "a) C, D and E are correct",
-      "b) A, B and C are correct",
-      "c) B, C and E are correct",
-      "d) A, D and E are correct"
-    ],
-    "answer": "c"
-},
-{ // q68
-    "question": "Which phylum includes animals that show bilateral symmetry in their larval stage but radial symmetry as adults? (2004)",
-    "options": [
-      "a) Mollusca",
-      "b) Echinodermata",
-      "c) Cnidaria",
-      "d) Annelida"
-    ],
-    "answer": "b"
-},
-{ // q74
-    "question": "Tube feet are the signature locomotive structures of which organism? [OS] (1994)",
-    "options": [
-      "a) Cuttlefish",
-      "b) Crayfish",
-      "c) Jellyfish",
-      "d) Starfish"
-    ],
-    "answer": "d"
-},
-{ // q77
-    "question": "The structure known as Aristotle's lantern is a feature found in which class? [OS] (1992)",
-    "options": [
-      "a) Asteroidea",
-      "b) Ophiuroidea",
-      "c) Holothuroidea",
-      "d) Echinoidea"
-    ],
-    "answer": "d"
-},
-{ // q78
-    "question": "To what class does the Starfish belong? [OS] (1992)",
-    "options": [
-      "a) Crinoidea",
-      "b) Ophiuroidea",
-      "c) Asteroidea",
-      "d) Holothuroidea"
-    ],
-    "answer": "c"
-},
-{ // q81
-    "question": "Which of the following characteristics is found in members of the phylum Echinodermata? (1991)",
-    "options": [
-      "a) Porous body",
-      "b) Bilateral symmetry",
-      "c) Soft skin",
-      "d) Radial symmetry"
-    ],
-    "answer": "d"
-}    ], "NEET POINTERS:<br><br>1. Phylum Echinodermata consists of spiny-bodied marine animals with an endoskeleton of calcareous ossicles.<br><br>2. Adults are radially symmetrical, while their larvae are bilaterally symmetrical.<br><br>3. They are triploblastic, coelomate animals with an organ-system level of organisation.<br><br>4. The digestive system is complete, with a ventral mouth and a dorsal anus.<br><br>5. The most distinctive feature is the water vascular system, which functions in locomotion, food capture/transport, and respiration.<br><br>6. Echinoderms lack an excretory system.<br><br>7. Sexes are separate, fertilisation is external, and development is indirect via a free-swimming larva.<br><br>8. Key examples are *Asterias* (Star fish), *Echinus* (Sea urchin), *Antedon* (Sea lily), *Cucumaria* (Sea cucumber), and *Ophiura* (Brittle star)."],
-          "46": [[], ""], "47": [[], ""], "48": [[], ""], "49": [[], ""], "50": [[], ""],
+          "37": [[], ""], "38": [[], ""], "39": [[], ""], "40": [[], ""], "41": [[], ""], "42": [[], ""], "43": [[], ""],
+          "44": [[], ""], "45": [[], ""], "46": [[], ""], "47": [[], ""], "48": [[], ""], "49": [[], ""], "50": [[], ""],
           "51": [[], ""], "52": [[], ""], "53": [[], ""], "54": [[], ""]
         }
       },
@@ -1648,189 +1026,7 @@
       "5": {
         title: "Molecular Basis of Inheritance",
         questions: {
-          "79": [[// Block 1 - Random order: c, a, d, b
-
-{
-question: "According to the reactivity series of metals, which one of the following metals can displace copper from copper sulphate solution?",
-options: [
-"a) Silver, as it is more reactive than copper",
-"b) Gold, as it is more reactive than copper",
-"c) Zinc, as it is more reactive than copper",
-"d) Mercury, as it is more reactive than copper"
-],
-answer: "c) Zinc, as it is more reactive than copper"
-},
-
-{
-question: "When an iron nail is dipped in copper sulphate solution, the colour of the solution changes. This reaction occurs because:",
-options: [
-"a) Iron is more reactive than copper and displaces it",
-"b) Copper is more reactive than iron and displaces it",
-"c) Iron and copper have similar reactivity and exchange",
-"d) Copper oxidizes iron without any displacement reaction"
-],
-answer: "a) Iron is more reactive than copper and displaces it"
-},
-
-{
-question: "In the reactivity series of metals, which metal is placed at the topmost position indicating highest reactivity?",
-options: [
-"a) Sodium is the most reactive metal in series",
-"b) Calcium is the most reactive metal in series",
-"c) Magnesium is the most reactive metal in series",
-"d) Potassium is the most reactive metal in series"
-],
-answer: "d) Potassium is the most reactive metal in series"
-},
-
-{
-question: "When a copper coin is placed in silver nitrate solution for 20 minutes, what change is observed?",
-options: [
-"a) Silver deposits on copper surface due to displacement",
-"b) Silver deposits on copper surface due to displacement",
-"c) No reaction occurs as copper is less reactive than silver",
-"d) Copper dissolves but silver does not get displaced"
-],
-answer: "b) Silver deposits on copper surface due to displacement"
-},
-
-// Block 2 - Random order: d, b, a, c
-
-{
-question: "The reactivity series arranges metals in decreasing order of reactivity. Which of these statements correctly describes this arrangement?",
-options: [
-"a) Most reactive metal at bottom, least reactive at top",
-"b) Metals arranged alphabetically with no reactivity order",
-"c) Metals arranged by atomic mass from highest to lowest",
-"d) Most reactive metal at top, least reactive at bottom"
-],
-answer: "d) Most reactive metal at top, least reactive at bottom"
-},
-
-{
-question: "Which non-metal is included in the activity series of metals for comparison purposes?",
-options: [
-"a) Oxygen is included for reactivity comparison purposes",
-"b) Hydrogen is included for reactivity comparison purposes",
-"c) Carbon is included for reactivity comparison purposes",
-"d) Nitrogen is included for reactivity comparison purposes"
-],
-answer: "b) Hydrogen is included for reactivity comparison purposes"
-},
-
-{
-question: "When aluminium is added to copper sulphate solution, a displacement reaction occurs. This happens because:",
-options: [
-"a) Aluminium is more reactive and displaces copper metal",
-"b) Copper is more reactive and displaces aluminium metal",
-"c) Both metals have equal reactivity and form mixture",
-"d) Aluminium forms a protective oxide layer preventing reaction"
-],
-answer: "a) Aluminium is more reactive and displaces copper metal"
-},
-
-{
-question: "In the reactivity series K > Na > Ca > Mg > Al > Zn > Fe > Pb > H > Cu > Hg > Ag > Au > Pt, which metal is least reactive?",
-options: [
-"a) Silver is the least reactive metal in series",
-"b) Gold is less reactive than silver in series",
-"c) Platinum is the least reactive metal in series",
-"d) Mercury is the least reactive metal in series"
-],
-answer: "c) Platinum is the least reactive metal in series"
-},
-
-// Block 3 - Random order: b, c, d, a
-
-{
-question: "A general principle states that more reactive metals displace less reactive metals. This displacement occurs from:",
-options: [
-"a) Solution or molten form of the metal compound",
-"b) Solution or molten form of the metal compound",
-"c) Solid state of the metal compound only",
-"d) Gaseous state of the metal compound only"
-],
-answer: "b) Solution or molten form of the metal compound"
-},
-
-{
-question: "When small pieces of magnesium are added to copper sulphate solution and observed after 20 minutes, what change occurs?",
-options: [
-"a) No change as magnesium is less reactive than copper",
-"b) Blue colour fades as copper gets displaced by magnesium",
-"c) Colour change occurs as copper gets displaced by magnesium",
-"d) Solution turns green as magnesium forms new compound"
-],
-answer: "c) Colour change occurs as copper gets displaced by magnesium"
-},
-
-{
-question: "In Activity 3.11, when a copper wire is placed in iron sulphate solution, what observation is expected?",
-options: [
-"a) Copper displaces iron as it is more reactive metal",
-"b) Iron displaces copper as it is more reactive metal",
-"c) Both metals dissolve forming a mixed compound solution",
-"d) No reaction occurs as copper is less reactive than iron"
-],
-answer: "d) No reaction occurs as copper is less reactive than iron"
-},
-
-{
-question: "According to the reactivity series, which metal can displace lead from its salt solution?",
-options: [
-"a) Zinc can displace lead from its salt solution",
-"b) Copper cannot displace lead from its salt solution",
-"c) Silver cannot displace lead from its salt solution",
-"d) Mercury cannot displace lead from its salt solution"
-],
-answer: "a) Zinc can displace lead from its salt solution"
-},
-
-// Block 4 - Random order: c, d, b, a
-
-{
-question: "The activity series of metals helps predict whether a displacement reaction will occur. Which factor determines this prediction?",
-options: [
-"a) Atomic mass difference between the two metals involved",
-"b) Physical state of metals at room temperature conditions",
-"c) Relative positions of metals in the reactivity series",
-"d) Melting points of the metals involved in reaction"
-],
-answer: "c) Relative positions of metals in the reactivity series"
-},
-
-{
-question: "When metals react with dilute acids, which gas is commonly produced as per the content?",
-options: [
-"a) Oxygen gas is produced when metals react with acids",
-"b) Carbon dioxide gas is produced when metals react",
-"c) Nitrogen gas is produced when metals react with acids",
-"d) Hydrogen gas is produced when metals react with acids"
-],
-answer: "d) Hydrogen gas is produced when metals react with acids"
-},
-
-{
-question: "Among calcium, magnesium, aluminium and zinc, which metal is most reactive according to the series?",
-options: [
-"a) Zinc is the most reactive among these four metals",
-"b) Calcium is the most reactive among these four metals",
-"c) Aluminium is the most reactive among these four metals",
-"d) Magnesium is the most reactive among these four metals"
-],
-answer: "b) Calcium is the most reactive among these four metals"
-},
-
-{
-question: "If a metal can displace another metal from its salt solution, what conclusion can be drawn?",
-options: [
-"a) The displacing metal is more reactive than displaced one",
-"b) Both metals have equal reactivity in the series order",
-"c) The displaced metal is more reactive than displacing one",
-"d) Temperature determines which metal will displace the other"
-],
-answer: "a) The displacing metal is more reactive than displaced one"
-}], ""], "80": [[], ""], "81": [[], ""], "82": [[], ""], "83": [[], ""], "84": [[], ""], "85": [[], ""],
+          "79": [[], ""], "80": [[], ""], "81": [[], ""], "82": [[], ""], "83": [[], ""], "84": [[], ""], "85": [[], ""],
           "86": [[], ""], "87": [[], ""], "88": [[], ""], "89": [[], ""], "90": [[], ""], "91": [[], ""], "92": [[], ""],
           "93": [[], ""], "94": [[], ""], "95": [[], ""], "96": [[], ""], "97": [[], ""], "98": [[], ""], "99": [[], ""],
           "100": [[], ""], "101": [[], ""], "102": [[], ""], "103": [[], ""], "104": [[], ""], "105": [[], ""], "106": [[], ""],
@@ -1848,7 +1044,7 @@ answer: "a) The displacing metal is more reactive than displaced one"
       "7": {
         title: "Human Health and Disease",
         questions: {
-          "129": [[], "NEET POINTERS:<br><br>1. Whittaker proposed the Five Kingdom classification system in 1969 which includes Monera, Protista, Fungi, Animalia and Plantae. <b>NEETOMETER: 75%</b><br><br>2. Kingdom Plantae is popularly known as the plant kingdom and is dealt with in detail in this chapter. <b>NEETOMETER: 40%</b><br><br>3. The understanding of the plant kingdom has changed over time with organisms being reclassified based on new scientific evidence. <b>NEETOMETER: 50%</b><br><br>4. Fungi and members of Monera and Protista having cell walls have now been excluded from Plantae though earlier classification placed them in the same kingdom. <b>NEETOMETER: 70%</b><br><br>5. Cyanobacteria that are also referred to as blue green algae are not algae anymore and have been excluded from Kingdom Plantae. <b>NEETOMETER: 85%</b><br><br>6. The modern classification of Kingdom Plantae includes Algae, Bryophytes, Pteridophytes, Gymnosperms and Angiosperms. <b>NEETOMETER: 90%</b><br><br>7. The earliest systems of classification used only gross superficial morphological characters such as habit, colour, number and shape of leaves. <b>NEETOMETER: 55%</b><br><br>8. Early classification systems were based mainly on vegetative characters or on the androecium structure. <b>NEETOMETER: 60%</b><br><br>9. The artificial classification system was given by Linnaeus and was based on the androecium structure. <b>NEETOMETER: 80%</b><br><br>10. Artificial classification systems were artificial because they separated closely related species since they were based on a few characteristics. <b>NEETOMETER: 65%</b><br><br>11. Artificial systems gave equal weightage to vegetative and sexual characteristics which is not acceptable. <b>NEETOMETER: 55%</b><br><br>12. Vegetative characters are more easily affected by environment and therefore are not reliable for classification. <b>NEETOMETER: 70%</b><br><br>13. Natural classification systems developed as an improvement over artificial systems and were based on natural affinities among organisms. <b>NEETOMETER: 75%</b><br><br>14. Natural classification systems considered a wider range of characteristics and relationships among organisms. <b>NEETOMETER: 65%</b><br><br>15. Phylogenetic classification is based on evolutionary relationships between organisms. <b>NEETOMETER: 85%</b><br><br>16. George Bentham and Joseph Dalton Hooker gave the classification for flowering plants based on natural systems. <b>NEETOMETER: 70%</b><br><br>17. Numerical Taxonomy is based on all observable characteristics with equal importance. <b>NEETOMETER: 60%</b><br><br>18. Cytotaxonomy is based on chromosome number, structure and behaviour. <b>NEETOMETER: 75%</b><br><br>19. Chemotaxonomy uses chemical constituents of plants to resolve classification confusions. <b>NEETOMETER: 65%</b>"], "130": [[], ""], "131": [[], ""], "132": [[], ""], "133": [[], ""], "134": [[], ""], "135": [[], ""],
+          "129": [[], ""], "130": [[], ""], "131": [[], ""], "132": [[], ""], "133": [[], ""], "134": [[], ""], "135": [[], ""],
           "136": [[], ""], "137": [[], ""], "138": [[], ""], "139": [[], ""], "140": [[], ""], "141": [[], ""], "142": [[], ""],
           "143": [[], ""], "144": [[], ""], "145": [[], ""], "146": [[], ""], "147": [[], ""], "148": [[], ""]
         }
@@ -2229,50 +1425,55 @@ answer: "a) The displacing metal is more reactive than displaced one"
     let html = '';
     
     if (questions.length > 0) {
-      html += `<div class="question-count">${questions.length} Question${questions.length > 1 ? 's' : ''} from Page ${pageValue}</div>`;
+      html += '<div class="question-count">' + questions.length + ' Question' + (questions.length > 1 ? 's' : '') + ' from Page ' + pageValue + '</div>';
     }
     
     if (summary) {
-      html += `<button class="summary-toggle-btn" onclick="toggleSummary()"><span>📚</span> View NEET Pointers</button>`;
-      html += `<div class="summary-content" id="summaryContent">`;
+      html += '<button class="summary-toggle-btn" onclick="toggleSummary()"><span>📚</span> View NEET Pointers</button>';
+      html += '<div class="summary-content" id="summaryContent">';
       html += processSummaryWithChatGPT(summary);
-      html += `</div>`;
+      html += '</div>';
     }
     
     questions.forEach((q, index) => {
-      const qKey = `${classValue}-${chapterValue}-${pageValue}-${index}`;
+      const qKey = classValue + '-' + chapterValue + '-' + pageValue + '-' + index;
       const state = questionStates[qKey] || { answered: false, selectedOption: null, isCorrect: false };
       
-      html += `
-        <div class="question-item" data-qkey="${qKey}">
-          <div class="question-header">
-            <span class="question-number">Question ${index + 1}.</span>
-            <button class="copy-btn-header" onclick="copyQuestion(${index})">Copy</button>
-          </div>
-          <div class="question-text">${q.question}</div>
-          <div class="options">
-            ${q.options.map((opt, optIndex) => {
-              let optClass = 'option';
-              if (state.answered) {
-                optClass += ' disabled';
-                if (state.isCorrect && opt === state.selectedOption) {
-                  optClass += ' answered-correct';
-                } else if (!state.isCorrect && opt === state.selectedOption) {
-                  optClass += ' answered-incorrect';
-                }
-              }
-              return `<div class="${optClass}" onclick="selectOption('${qKey}', '${opt}', '${q.answer}', ${optIndex})">${opt}</div>`;
-            }).join('')}
-          </div>
-          <div class="button-group">
-            <button class="btn btn-answer" onclick="showAnswer('${qKey}')">Show Answer</button>
-            <button class="chatgpt-btn" onclick="openChatGPTForQuestion(${index})">ChatGPT Explain</button>
-          </div>
-          <div class="answer-reveal" id="answer-${qKey}">
-            <strong>Correct Answer:</strong> ${q.answer}
-          </div>
-        </div>
-      `;
+      html += '<div class="question-item" data-qkey="' + qKey + '">';
+      html += '<div class="question-header">';
+      html += '<span class="question-number">Question ' + (index + 1) + '.</span>';
+      html += '<button class="copy-btn-header" onclick="copyQuestion(' + index + ')">Copy</button>';
+      html += '</div>';
+      html += '<div class="question-text">' + q.question + '</div>';
+      html += '<div class="options">';
+      
+      q.options.forEach((opt, optIndex) => {
+        let optClass = 'option';
+        if (state.answered) {
+          optClass += ' disabled';
+          if (state.isCorrect && opt === state.selectedOption) {
+            optClass += ' answered-correct';
+          } else if (!state.isCorrect && opt === state.selectedOption) {
+            optClass += ' answered-incorrect';
+          }
+        }
+        html += '<div class="' + optClass + '" onclick="selectOption(\'' + qKey + '\', \'' + opt + '\', \'' + q.answer + '\', ' + optIndex + ')">' + opt + '</div>';
+      });
+      
+      html += '</div>';
+      html += '<div class="button-group">';
+      html += '<button class="btn btn-answer" onclick="showAnswer(\'' + qKey + '\')">Show Answer</button>';
+      html += '<button class="chatgpt-btn" onclick="openChatGPTForQuestion(' + index + ')">ChatGPT Explain</button>';
+      html += '</div>';
+      html += '<div class="answer-reveal" id="answer-' + qKey + '">';
+      html += '<strong>Correct Answer:</strong> ' + q.answer;
+      html += '</div>';
+      html += '</div>';
+      
+      if (index === 0) {
+        const defaultMCQNote = "Note: don't leave the chatgpt page without clicking the submit arrow, as it may result in repeated display of the same MCQ even in the next chat";
+        html += '<div style="background-color: rgba(255, 200, 87, 0.3); border: 2px solid #ff9800; padding: 16px 20px; border-radius: 10px; margin-bottom: 26px; font-weight: 600; color: #e65100; font-size: 15px;">' + defaultMCQNote + '</div>';
+      }
     });
     
     contentArea.innerHTML = html;
@@ -2283,16 +1484,16 @@ answer: "a) The displacing metal is more reactive than displaced one"
     const pointers = summaryHTML.split('<br><br>').filter(p => p.trim());
     let processedHTML = '';
     
+    const defaultNote = "Note: don't leave the chatgpt page without clicking the submit arrow, as it may result in repeated display of the same pointer even in the next chat";
+    processedHTML += '<div class="summary-pointer" style="background-color: rgba(255, 200, 87, 0.3); border: 2px solid #ff9800;"><span class="pointer-text" style="font-weight: 600; color: #e65100;">' + defaultNote + '</span></div>';
+    
     pointers.forEach((pointer, index) => {
       let cleanPointer = pointer.replace(/<br>/g, ' ').trim();
       cleanPointer = cleanPointer.replace(/^\d+\.\s*/, '');
       
       if (cleanPointer) {
-        processedHTML += `
-          <div class="summary-pointer">
-            <span class="pointer-text">${pointer.trim()} <button class="pointer-chatgpt-btn" onclick="openChatGPTForPointer(\`${cleanPointer.replace(/`/g, '\\`').replace(/'/g, "\\'")}\`)">AI</button></span>
-          </div>
-        `;
+        const escapedPointer = cleanPointer.replace(/`/g, '\\`').replace(/'/g, "\\'");
+        processedHTML += '<div class="summary-pointer"><span class="pointer-text">' + pointer.trim() + ' <button class="pointer-chatgpt-btn" onclick="openChatGPTForPointer(`' + escapedPointer + '`)">AI</button></span></div>';
       }
     });
     
@@ -2300,17 +1501,17 @@ answer: "a) The displacing metal is more reactive than displaced one"
   }
 
   function openChatGPTForPointer(pointerText) {
-    const prompt = `"${pointerText}"`;
-    const chatGPTURL = `https://chat.openai.com/?q=${encodeURIComponent(prompt)}`;
+    const prompt = '"' + pointerText + '"\n\n*Version 1: explain this statement with keywords emphasis\n\nOr type any other query below\n\n\nNote: don\'t leave the chatgpt page without clicking the submit arrow,as it may result in repeated display of the same pointer in the next chat';
+    const chatGPTURL = 'https://chat.openai.com/?q=' + encodeURIComponent(prompt);
     window.open(chatGPTURL, '_blank');
   }
 
   function openChatGPTForQuestion(index) {
     const question = currentQuestions[index];
     
-    const prompt = `${question.question}\n\n${question.options.join('\n')}\n\nAnswer and explain this in 3 versions.\nVersion 1: Correct answer highlight and brief explanation\nVersion 2: Quote exact reference from NCERT textbook latest reprint and explain accordingly\nVersion 3: Detailed explanation with options analysis.`;
+    const prompt = question.question + '\n\n' + question.options.join('\n') + '\n\nAnswer and explain this in 3 versions.\nVersion 1: Correct answer highlight and brief explanation\nVersion 2: Quote exact reference from NCERT textbook latest reprint and explain accordingly\nVersion 3: Detailed explanation with options analysis.';
     
-    const chatGPTURL = `https://chat.openai.com/?q=${encodeURIComponent(prompt)}`;
+    const chatGPTURL = 'https://chat.openai.com/?q=' + encodeURIComponent(prompt);
     window.open(chatGPTURL, '_blank');
   }
 
@@ -2335,7 +1536,7 @@ answer: "a) The displacing metal is more reactive than displaced one"
     savePersistentData();
     
     const popup = document.createElement('div');
-    popup.className = `tick-cross-popup ${isCorrect ? 'correct' : 'incorrect'}`;
+    popup.className = 'tick-cross-popup ' + (isCorrect ? 'correct' : 'incorrect');
     popup.textContent = isCorrect ? '✓' : '✗';
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 1500);
@@ -2344,7 +1545,7 @@ answer: "a) The displacing metal is more reactive than displaced one"
   }
 
   function showAnswer(qKey) {
-    const answerDiv = document.getElementById(`answer-${qKey}`);
+    const answerDiv = document.getElementById('answer-' + qKey);
     if (answerDiv) {
       answerDiv.style.display = answerDiv.style.display === 'none' || !answerDiv.style.display ? 'block' : 'none';
     }
@@ -2352,7 +1553,7 @@ answer: "a) The displacing metal is more reactive than displaced one"
 
   function copyQuestion(index) {
     const question = currentQuestions[index];
-    const text = `${question.question}\n\n${question.options.join('\n')}\n\nAnswer: ${question.answer}`;
+    const text = question.question + '\n\n' + question.options.join('\n') + '\n\nAnswer: ' + question.answer;
     
     navigator.clipboard.writeText(text).then(() => {
       const notification = document.createElement('div');
@@ -2382,14 +1583,14 @@ answer: "a) The displacing metal is more reactive than displaced one"
     let total = currentQuestions.length;
     
     currentQuestions.forEach((q, index) => {
-      const qKey = `${classValue}-${chapterValue}-${pageValue}-${index}`;
+      const qKey = classValue + '-' + chapterValue + '-' + pageValue + '-' + index;
       const state = questionStates[qKey];
       if (state && state.answered && state.isCorrect) {
         correct++;
       }
     });
     
-    scoreCard.textContent = `Page score: ${correct} / ${total}`;
+    scoreCard.textContent = 'Page score: ' + correct + ' / ' + total;
   }
 
   function refreshChapterScore() {
@@ -2406,181 +1607,13 @@ answer: "a) The displacing metal is more reactive than displaced one"
     }
     
     currentQuestions.forEach((q, index) => {
-      const qKey = `${classValue}-${chapterValue}-${pageValue}-${index}`;
+      const qKey = classValue + '-' + chapterValue + '-' + pageValue + '-' + index;
       delete questionStates[qKey];
     });
     savePersistentData();
     showQuestions();
   }
-
-  // Counter animation function for individual digits
-  function animateCounterDigits(digitIds, targetNumber, duration) {
-    const digits = String(targetNumber).padStart(digitIds.length, '0').split('');
-    const startTime = Date.now();
-    
-    function updateDigits() {
-      const now = Date.now();
-      const progress = Math.min((now - startTime) / duration, 1);
-      
-      digits.forEach((targetDigit, index) => {
-        const element = document.getElementById(digitIds[index]);
-        if (element) {
-          if (progress < 1) {
-            element.textContent = Math.floor(Math.random() * 10);
-          } else {
-            element.textContent = targetDigit;
-          }
-        }
-      });
-      
-      if (progress < 1) {
-        requestAnimationFrame(updateDigits);
-      }
-    }
-    
-    updateDigits();
-  }
-  
-  // Start counter animation on page load
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      animateCounterDigits(['mcq-d1', 'mcq-d2', 'mcq-d3', 'mcq-d4'], 6000, 2000);
-      animateCounterDigits(['ptr-d1', 'ptr-d2', 'ptr-d3', 'ptr-d4', 'ptr-d5'], 10000, 2500);
-    }, 300);
-  });
-
 </script>
 
-  
-<!-- SIMPLIFIED TEXT HIGHLIGHTING FOR NEET POINTERS -->
-<style>
-  .text-highlight {
-    background: #ffd60a;
-    padding: 2px 0;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  
-  .text-highlight:hover {
-    background: #ffed4e;
-  }
-  
-  .highlight-menu {
-    position: fixed;
-    background: white;
-    border: 2px solid #2d6a4f;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    display: none;
-    z-index: 99999;
-  }
-  
-  .highlight-menu.show { display: block; }
-  
-  .color-btn {
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 6px;
-    margin: 0 4px;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  
-  .color-btn:hover { transform: scale(1.1); }
-  
-  .color-yellow { background: #ffd60a; }
-  .color-green { background: #52b788; }
-  .color-blue { background: #42A5F5; }
-  .color-pink { background: #F48FB1; }
-  .color-remove { background: #ff4444; color: white; font-weight: bold; }
-</style>
-
-<div id="highlightMenu" class="highlight-menu">
-  <button class="color-btn color-yellow" onclick="highlightText('#ffd60a')">Y</button>
-  <button class="color-btn color-green" onclick="highlightText('#52b788')">G</button>
-  <button class="color-btn color-blue" onclick="highlightText('#42A5F5')">B</button>
-  <button class="color-btn color-pink" onclick="highlightText('#F48FB1')">P</button>
-  <button class="color-btn color-remove" onclick="removeHighlight()">×</button>
-</div>
-
-<script>
-let selectedTextNode = null;
-let selectedTextRange = null;
-
-// Show menu on text selection
-document.addEventListener('mouseup', function(e) {
-  const selection = window.getSelection();
-  const text = selection.toString().trim();
-  
-  // Only work in summary pointers
-  const inPointer = e.target.closest('.summary-pointer');
-  if (!inPointer || text.length === 0) {
-    document.getElementById('highlightMenu').classList.remove('show');
-    return;
-  }
-  
-  if (text.length > 0 && text.length < 150) {
-    selectedTextRange = selection.getRangeAt(0);
-    selectedTextNode = selection.anchorNode;
-    
-    // Position menu
-    const rect = selectedTextRange.getBoundingClientRect();
-    const menu = document.getElementById('highlightMenu');
-    menu.style.left = (rect.left + window.scrollX) + 'px';
-    menu.style.top = (rect.top + window.scrollY - 60) + 'px';
-    menu.classList.add('show');
-  }
-});
-
-// Close menu on click outside
-document.addEventListener('mousedown', function(e) {
-  if (!e.target.closest('#highlightMenu') && !e.target.closest('.summary-pointer')) {
-    document.getElementById('highlightMenu').classList.remove('show');
-  }
-});
-
-// Apply highlight
-function highlightText(color) {
-  if (!selectedTextRange) return;
-  
-  const span = document.createElement('span');
-  span.className = 'text-highlight';
-  span.style.background = color;
-  
-  try {
-    selectedTextRange.surroundContents(span);
-  } catch(e) {
-    console.log('Cannot highlight across elements');
-  }
-  
-  document.getElementById('highlightMenu').classList.remove('show');
-  window.getSelection().removeAllRanges();
-}
-
-// Remove highlight
-function removeHighlight() {
-  const selection = window.getSelection();
-  const node = selection.anchorNode?.parentElement;
-  
-  if (node && node.classList.contains('text-highlight')) {
-    const text = node.textContent;
-    node.replaceWith(text);
-  }
-  
-  document.getElementById('highlightMenu').classList.remove('show');
-}
-
-// Double-click to remove
-document.addEventListener('dblclick', function(e) {
-  if (e.target.classList.contains('text-highlight')) {
-    const text = e.target.textContent;
-    e.target.replaceWith(text);
-  }
-});
-</script>  
-  
 </body>
 </html>
